@@ -2,15 +2,33 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const sqlDbFactory = require("knex");   //it's like a factory function, it creates the connection
+const process = require("process");
 
-const sqlDb = sqlDbFactory({
-  client: "sqlite3",
-  debug: true,
-  connection: {
-    filename: "./doctorsdb.sqlite"   //we're gonna find in our directory this db, it's getting created with this
-  },
-   useNullAsDefault: true  //this line resolved the error, I added it watching on the internet
-});
+let sqlDb;
+
+function initSqlDB() {
+  /* Locally we should launch the app with TEST=true to use SQLlite:
+
+       > TEST = true node ./index.js
+
+    */
+  if (process.env.TEST) {
+    sqlDb = sqlDbFactory({
+      client: "sqlite3",
+      debug: true,
+      connection: {
+        filename: "./petsdb.sqlite"
+      }
+    });
+  } else {
+    sqlDb = sqlDbFactory({
+      debug: true,
+      client: "pg",
+      connection: process.env.DATABASE_URL,
+      ssl: true
+    });
+  }
+}
 
 function initDb() {   //we first have to specify the schema of the database
   return sqlDb.schema.hasTable("doctors").then(exists => {
@@ -110,6 +128,7 @@ app.post("/doctors", function(req, res) {
 
 app.set("port", serverPort);
 
+initSqlDB();
 initDb();
 
 /* Start the server on port 5000 */
