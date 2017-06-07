@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Doctors Backend Test!</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>
+</head>
+
+<body>
+    <div>
+        <h1>Doctors united!</h1>
+        <hr />
+        <p>Your doctor list:</p>
+        <table id="mytable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Sex</th>
+                    <th>Age</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Location</th>
+                    <th>Area</th>
+                    <th>Service</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="myrows">
+                <!-- We are going to fill up this with dynamic data HIHI -->
+            </tbody>
+        </table>
+        <button id="addDoctorButton" style="background-color:#f17400" onclick="clickAddDoctor()">Add Doctor</button>
+        <button id="previousPage" style="background-color:#f17440" onclick="previousPage()"> << </button>
+        <button id="nextPage" style="background-color:#f17480" onclick="nextPage()"> >> </button>
+        <button id="ageasc"  style="background-color:#f174b6" onclick="setSort('age')"> Sort (+) </button>
+        <button id="agedesc" style="background-color:#f174ff" onclick="setSort('-age')"> Sort (-) </button>
+    </div>
+    <div id="addDoctorFormDiv">
+        <h3>Insert your doctor</h3>
+        <form id="adddoctorform">
+            <div>
+                <label>Name</label>
+                <input value="Your doctor's name" type="text" name="name" />
+            </div>
+            <div>
+                <label>Sex</label>
+                <input value="Your doctor's sex" type="text" name="sex" />
+            </div>
+             <div> 
+                 <label>Date</label> 
+                <input value="Your doctor's birth year" type="text" name="date"/>
+               </div>
+               <div> 
+                 <label>Phone</label> 
+                <input value="Your doctor's phone" type="text" name="phone"/>
+               </div>
+               <div> 
+                 <label>Email</label> 
+                <input value="Your doctor's email" type="text" name="email"/>
+               </div>
+               <div> 
+                 <label>Location</label> 
+                <input value="Your doctor's location" type="text" name="location"/>
+               </div>
+               <div> 
+                 <label>Area</label> 
+                <input value="Your doctor's area" type="text" name="area"/>
+               </div>
+               <div> 
+                 <label>Service</label> 
+                <input value="Your doctor's service" type="text" name="service"/>
+               </div>
+        </form>
+        <button onclick="clickSubmitDoctorData()">Submit Doctor </button>
+        <button onclick="clickCancelDoctorSubmit()">Cancel</button>
+    </div>
+    <div id="responseDataOK"> 
+        <h1>OK!</h1>
+    </div>
+    <div id="responseDataKO">
+        <h1>Error!</h1>
+    </div>
+</body>
+<script type="text/javascript" src="script.js"></script>  
+
+</html>
