@@ -17,7 +17,7 @@ function initSqlDB() {
       client: "sqlite3",
       debug: true,
       connection: {
-        filename: "./petsdb.sqlite"
+        filename: "./doctorsdb.sqlite"
       }
     });
   } else {
