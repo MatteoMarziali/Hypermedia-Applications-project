@@ -116,7 +116,7 @@
         }
 				
 (function ($, window, document, undefined) {
-
+/*
     var gridContainer = $('#grid-container'),
         filtersContainer = $('#filters-container');
     
@@ -219,7 +219,7 @@
 
     // activate counter for filters
     gridContainer.cubeportfolio('showCounter', filtersContainer.find('.cbp-filter-item'));
-
+*/
 })(jQuery, window, document);
 		
 	
