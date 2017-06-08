@@ -88,7 +88,25 @@ app.get("/doctors", function(req, res) {
     res.send(JSON.stringify(result));
   });
 });
+/*
+app.get("/doctors", function(req, res) {
+  //let start = parseInt(_.get(req, "query.start", 0));
+  let limit = parseInt(_.get(req, "query.limit", 2));   //il numero era 5
+  let sortby = _.get(req, "query.sort", "none");
+  let myQuery = sqlDb("doctors");
 
+  if (sortby === "age") {
+    myQuery = myQuery.orderBy("date", "asc");
+  } else if (sortby === "-age") {
+    myQuery = myQuery.orderBy("date", "desc");
+  } else if (sortby === "name"){
+    myQuery = myQuery.orderBy("name", "asc");
+  }
+  myQuery.limit(limit).then(result => {
+    res.send(JSON.stringify(result));
+  });
+});
+*/
 app.delete("/doctors/:id", function(req, res) {
   let idn = parseInt(req.params.id);
   sqlDb("doctors").where("id", idn).del().then(() => {

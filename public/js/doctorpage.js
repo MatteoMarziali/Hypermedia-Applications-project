@@ -14,7 +14,9 @@ $(window).ready(function () {   //jquery
     //console.log("Doctor id: "+URL.id);
     //console.log(HREF);
    //var idd=
-console.log("idd= "+getId());
+//console.log("idd= "+getId());
+    var iddd = getId();
+    getDoctor(iddd);
     //assigning variables to containers in html
     
     //storing the doctor fullname and everything to use later on
@@ -39,6 +41,36 @@ function getId() {
     return id;
     
     
+}
+
+
+
+function getDoctor(id) {  //sends a request, gets the rsults, and then rewrites the table row by row
+  fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      clearList();
+      data.map(addRow);
+    });
+};
+
+
+function addRow(doctor) {
+  console.log("addRow nel doctospage.js");
+  //let age = new Date().getFullYear() - doctor.date;   //getfullyear prende l'anno corrente della data corrente
+  $("#prova").append(
+    `
+<div>
+dsrgdrgdgdrc ciaaooo
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, perspiciatis, corporis, iusto a saepe iste ea odit quas fugit amet nisi adipisci excepturi ipsam quae asperiores sit blanditiis sunt ducimus magni eos non et quos dignissimos quaerat aspernatur. Enim, temporibus, ullam, vitae, accusantium veniam ut odio magni nobis animi ratione eaque at aliquam eos error quas eum unde laudantium quisquam dolores voluptas velit corporis fuga! Error, soluta, consequatur, excepturi earum laudantium ab magnam vitae eligendi consectetur dicta quo nesciunt eveniet facere iusto praesentium aliquid impedit tempora nobis deleniti fugiat corporis maiores cupiditate provident veritatis quod odio nulla vel ratione quas.
+	</div>
+                
+                
+    
+`
+  );
 }
 
 /*
