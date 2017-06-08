@@ -46,12 +46,11 @@ function getId() {
 
 
 function getDoctor(id) {  //sends a request, gets the rsults, and then rewrites the table row by row
-  fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
+  fetch(`/doctors?limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
     .then(function(response) {
       return response.json();
     })
     .then(function(data) {
-      clearList();
       data.map(addRow);
     });
 };

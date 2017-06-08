@@ -72,6 +72,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // /* Register REST entry point */
 app.get("/doctors", function(req, res) {
+    console.log("sono nella get con start");
   let start = parseInt(_.get(req, "query.start", 0));
   let limit = parseInt(_.get(req, "query.limit", 10));   //il numero era 5
   let sortby = _.get(req, "query.sort", "none");
@@ -88,8 +89,9 @@ app.get("/doctors", function(req, res) {
     res.send(JSON.stringify(result));
   });
 });
-/*
+
 app.get("/doctors", function(req, res) {
+    console.log("sono nella get senza start");
   //let start = parseInt(_.get(req, "query.start", 0));
   let limit = parseInt(_.get(req, "query.limit", 2));   //il numero era 5
   let sortby = _.get(req, "query.sort", "none");
@@ -106,7 +108,7 @@ app.get("/doctors", function(req, res) {
     res.send(JSON.stringify(result));
   });
 });
-*/
+
 app.delete("/doctors/:id", function(req, res) {
   let idn = parseInt(req.params.id);
   sqlDb("doctors").where("id", idn).del().then(() => {
