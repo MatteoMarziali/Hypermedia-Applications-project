@@ -46,19 +46,20 @@ function getId() {
 
 
 function getDoctor(id) {  //sends a request, gets the rsults, and then rewrites the table row by row
-  fetch(`/doctors?limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
+  fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
     .then(function(response) {
       return response.json();
     })
     .then(function(data) {
-      data.map(addRow);
+      data.map(addDoctorInfo);
     }).then(function(){
       console.log("finito aggiungere roba dottore");
   });
 };
 
 
-function addRow(doctor) {
+
+function addDoctorInfo(doctor) {    //it gave me a big problem if I called this function addRow, it probably had a conflict with the call in another js
   console.log("addRow nel doctospage.js");
   //let age = new Date().getFullYear() - doctor.date;   //getfullyear prende l'anno corrente della data corrente
   $("#prova").append(
@@ -71,8 +72,16 @@ dsrgdrgdgdrc ciaaooo
                 
     
 `
-  );
+  );*/
+    
+    
 }
+
+
+
+
+
+
 
 /*
 var URL = function () {
