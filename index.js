@@ -81,6 +81,8 @@ app.get("/doctors", function(req, res) {
     myQuery = myQuery.orderBy("date", "asc");
   } else if (sortby === "-age") {
     myQuery = myQuery.orderBy("date", "desc");
+  } else if (sortby === "name"){
+    myQuery = myQuery.orderBy("name", "asc");
   }
   myQuery.limit(limit).offset(start).then(result => {
     res.send(JSON.stringify(result));

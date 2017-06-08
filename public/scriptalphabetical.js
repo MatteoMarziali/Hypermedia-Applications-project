@@ -152,9 +152,8 @@ let count = 10;
 let sortby = "none"; /* Can be none, "+age", "-age"*/    //criteria for sorting, string variable
 
 function setSort(x) {  //these 3 functions are connected to the event of the buttons
- if(x=="name")
-    sortby = x;
-  //updateDoctorsList();  //they then invoke updatedoctorslist, that is meant to access the doctors on the server with the current criteria, the fetch..
+  sortby = x;
+  updateDoctorsList();  //they then invoke updatedoctorslist, that is meant to access the doctors on the server with the current criteria, the fetch..
 }
 
 function nextPage() {
@@ -277,25 +276,11 @@ function updateDoctorsList() {  //sends a request, gets the rsults, and then rew
   });
 }
 
-function calculateSort(){
-   var sortText= $("#sort").text();
-    console.log("text:"+sortText);
-   // if(sortText=="name")
-        setSort(sortText);
-    
-}
-
-function calculateOrder(){
-   // if(this.window.getSort())
-}
-
 function startup() {   //hides all the data that should not be presented
   $(`#responseDataOK`).hide();
   $(`#responseDataKO`).hide();
   $("#addDoctorFormDiv").hide();
-  //calculateOrder();
-    calculateSort();
-    //setSort("name");
+  setSort("name");
   updateDoctorsList();
 }
 

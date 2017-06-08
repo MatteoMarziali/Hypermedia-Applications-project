@@ -7,7 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Medicio landing page template for Health niche</title>
+    <title>Prova</title>
+    <a id="sort">name</a>
 	
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -39,21 +40,11 @@
 <div id="wrapper">
 	
     <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-		<div class="top-area">
-			
-				<!--<div class="row">
-					<div class="col-dm-12 col-md-12">
-					<img src="Images/Homepage1.jpg" class="img-responsive" alt="" />
-					</div>
-					<div class="col-sm-6 col-md-6">
-					<p class="bold text-right">e pallini se riusciamo</p>
-					</div>
-				</div>-->
-			</div>
+		
 		
         <div class="container navigation">
 		
-            <div class="navbar-header page-scroll">
+            <div class="navbar-header page-scroll wow bounceIn" data-wow-delay="0.1s">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
@@ -66,159 +57,87 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 <!--				<li class="active"><a href="#intro">Home</a></li>-->
-                  <li><a href="#service">Who we are</a></li>
-                  <li><a href="#service">News</a></li>
-                  <li><a href="#service">Locations</a></li>
-				<li><a href="#service">Services</a></li>
-                  <li><a href="#service">Medical areas</a></li>
-				<li><a href="#doctor">Doctors</a></li>
-				<li><a href="#pricing">Practical info</a></li>
-                  <li><a href="#service">FAQs</a></li>
+                  <li class="wow tada"><a href="#service">Who we are</a></li>
+                  <li class="wow flash"><a href="#service">News</a></li>
+                  <li class="wow bounce"><a href="#service">Locations</a></li>
+				<li class="wow wobble"><a href="#service">Services</a></li>
+                  <li class="wow pulse"><a href="#service">Medical areas</a></li>
+				<li class="wow shake"><a href="#doctor">Doctors</a></li>
+				<li class="wow swing"><a href="#pricing">Practical info</a></li>
+                  <li class="wow tada"><a href="#service">FAQs</a></li>
 				<li class="dropdown">
-<!--				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge red pull-right">Extra</span>More <b class="caret"></b></a>-->
-<!--
-				  <ul class="dropdown-menu">
-				    <li><a href="index.html">Home CTA</a></li>
-					<li><a href="index-form.html">Home Form</a></li>
-					<li><a href="index-video.html">Home video</a></li>
-				  </ul>
--->
+
 				</li>
 			  </ul>
             </div>
-            <!-- /.navbar-collapse -->
+           
         </div>
-        <!-- /.container -->
+       
     </nav>
 	
-	<!-- Section: intro -->
-    
-	<!-- /Section: services -->
+
 	
 
-	<!-- Section: team -->
+	<!-- Section: doctors -->
     <section id="doctor" class="home-section bg-gray paddingbot-60">
 		<div class="container marginbot-50">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
-					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div>
 					<div class="section-heading text-center">
-					<h2 class="h-bold">Doctors</h2>
-					<p>Ea melius ceteros oportere quo, pri habeo viderer facilisi ei</p>
+					<h2 class="h-bold wow pulse" data-wow-delay="0.1s">Doctors</h2>
+					<p class="wow fadeInUpBig" data-wow-delay="0.1s">Ea melius ceteros oportere quo, pri habeo viderer facilisi ei</p>
 					</div>
 					</div>
-					<div class="divider-short"></div>
+					<div class="divider-short wow fadeInDown"></div>
 				</div>
 			</div>
 		</div>
-		
+        <!--<div id="ordercontainer" class="cbp-l-filters-alignLeft">
+                <div id="order" data-filter="*" class="cbp-filter-item" onclick="setSort('name')">Order in alphabetic order (<div class="cbp-filter-counter"></div>)</div>
+                
+            </div> -->
+		<button id="nameasc"  style="background-color:#f174b6" onclick="setSort('age')"> Sort (+) </button>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
-				
-            <div id="filters-container" class="cbp-l-filters-alignLeft">
-                <div data-filter="*" class="cbp-filter-item-active cbp-filter-item">All (<div class="cbp-filter-counter"></div>)</div>
-                <div data-filter=".cardiologist" class="cbp-filter-item">Cardiologist (<div class="cbp-filter-counter"></div>)</div>
-                <div data-filter=".psychiatrist" class="cbp-filter-item">Psychiatrist (<div class="cbp-filter-counter"></div>)</div>
-                <div data-filter=".neurologist" class="cbp-filter-item">Neurologist (<div class="cbp-filter-counter"></div>)</div>
-            </div>
-		
-            <div id="grid-container" class="cbp-l-grid-team">
-                <ul>
-                    <li class="cbp-item psychiatrist">
-                        <a href="doctors/member1.html" class="cbp-caption cbp-singlePage">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="img/team/1.jpg" alt="" width="100%">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="doctors/member1.html" class="cbp-singlePage cbp-l-grid-team-name">Alice Grue</a>
-                        <div class="cbp-l-grid-team-position">Psychiatrist</div>
-                    </li>
-                    <li class="cbp-item cardiologist">
-                        <a href="doctors/member2.html" class="cbp-caption cbp-singlePage">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="img/team/2.jpg" alt="" width="100%">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="doctors/member2.html" class="cbp-singlePage cbp-l-grid-team-name">Joseph Murphy</a>
-                        <div class="cbp-l-grid-team-position">Cardiologist</div>
-                    </li>
-                    <li class="cbp-item cardiologist">
-                        <a href="doctors/member3.html" class="cbp-caption cbp-singlePage">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="img/team/3.jpg" alt="" width="100%">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="doctors/member3.html" class="cbp-singlePage cbp-l-grid-team-name">Alison Davis</a>
-                        <div class="cbp-l-grid-team-position">Cardiologist</div>
-                    </li>
-                    <li class="cbp-item neurologist">
-                        <a href="doctors/member4.html" class="cbp-caption cbp-singlePage">
-                            <div class="cbp-caption-defaultWrap">
-                                <img src="img/team/4.jpg" alt="" width="100%">
-                            </div>
-                            <div class="cbp-caption-activeWrap">
-                                <div class="cbp-l-caption-alignCenter">
-                                    <div class="cbp-l-caption-body">
-                                        <div class="cbp-l-caption-text">VIEW PROFILE</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                        <a href="doctors/member4.html" class="cbp-singlePage cbp-l-grid-team-name">Adam Taylor</a>
-                        <div class="cbp-l-grid-team-position">Neurologist</div>
-                    </li>
 
-                </ul>
+		
+            <div id="grid-container" class="cbp-l-grid-team wow swing">
+                
+                <ul id="ul-dottori">
+                    <!--I'm going to add doctors dynamically -->
+                            </ul>
+
+
             </div>
 			</div>
 			</div>
 		</div>
 
 	</section>
-	<!-- /Section: team -->
+	
 
 	
 		
 	
 
-             
+     <!-- /Section: footer -->        
 
 	<footer>
 	
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-6 col-md-4">
-					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div class="wow fadeInLeft" data-wow-delay="0.3s">
 					<div class="widget">
-						<h5>About Medicio</h5>
+						<h5>About MJM</h5>
 						<p>
-						Lorem ipsum dolor sit amet, ne nam purto nihil impetus, an facilisi accommodare sea
+						The MJM Clinic was born On 29th of March in 1999, from the passion to help people of three young boys, which decided to open the biggest health care center in Milan. 
 						</p>
 					</div>
 					</div>
-					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div class="wow fadeInUp" data-wow-delay="0.3s">
 					<div class="widget">
 						<h5>Information</h5>
 						<ul>
@@ -231,30 +150,33 @@
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4">
-					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div class="wow fadeInUp" data-wow-delay="0.1s">
 					<div class="widget">
-						<h5>Medicio center</h5>
-						<p>
-						Nam leo lorem, tincidunt id risus ut, ornare tincidunt naqunc sit amet.
+						<h5 class="wow fadeInLeft" data-wow-delay="0.3s">MJM Clinic</h5>
+						<p class="wow fadeInRight" data-wow-delay="0.3s">
+						The MJM Clinic is a private home care facility that offers
+high-level medical and surgical performance.
+the patient is followed by a professional team with 
+proven experience at all stages of the clinical pathway
 						</p>
 						<ul>
-							<li>
+							<li class="wow fadeInLeft" data-wow-delay="0.1s">
 								<span class="fa-stack fa-lg">
 									<i class="fa fa-circle fa-stack-2x"></i>
 									<i class="fa fa-calendar-o fa-stack-1x fa-inverse"></i>
 								</span> Monday - Saturday, 8am to 10pm
 							</li>
-							<li>
+							<li class="wow fadeInRight" data-wow-delay="0.1s">
 								<span class="fa-stack fa-lg">
 									<i class="fa fa-circle fa-stack-2x"></i>
 									<i class="fa fa-phone fa-stack-1x fa-inverse"></i>
-								</span> +62 0888 904 711
+								</span> +02 95 039 388
 							</li>
-							<li>
+							<li class="wow fadeInLeft" data-wow-delay="0.1s">
 								<span class="fa-stack fa-lg">
 									<i class="fa fa-circle fa-stack-2x"></i>
 									<i class="fa fa-envelope-o fa-stack-1x fa-inverse"></i>
-								</span> hello@medicio.com
+								</span> info@mjm.com
 							</li>
 
 						</ul>
@@ -262,10 +184,10 @@
 					</div>
 				</div>
 				<div class="col-sm-6 col-md-4">
-					<div class="wow fadeInDown" data-wow-delay="0.1s">
+					<div class="wow fadeInRight" data-wow-delay="0.3s">
 					<div class="widget">
-						<h5>Our location</h5>
-						<p>The Suithouse V303, Kuningan City, Jakarta Indonesia 12940</p>		
+						<h5>Office location</h5>
+						<p>The Suithouse M23, Bussero City, Milan Italy 20060</p>		
 						
 					</div>
 					</div>
@@ -273,11 +195,12 @@
 					<div class="widget">
 						<h5>Follow us</h5>
 						<ul class="company-social">
-								<li class="social-facebook"><a href="#"><i class="fa fa-facebook"></i></a></li>
-								<li class="social-twitter"><a href="#"><i class="fa fa-twitter"></i></a></li>
-								<li class="social-google"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-								<li class="social-vimeo"><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
-								<li class="social-dribble"><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                            
+								<li class="social-facebook wow fadeInUp" data-wow-delay="0.2s"><a href="#"><i class="fa fa-facebook"></i></a></li>
+								<li class="social-twitter wow fadeInDown" data-wow-delay="0.4s"><a href="#"><i class="fa fa-twitter"></i></a></li>
+								<li class="social-google wow fadeInUp" data-wow-delay="0.6s"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+								<li class="social-vimeo wow fadeInDown" data-wow-delay="0.8s"><a href="#"><i class="fa fa-vimeo-square"></i></a></li>
+								<li class="social-dribble wow fadeInUp" data-wow-delay="1.0s"><a href="#"><i class="fa fa-dribbble"></i></a></li>
 						</ul>
 					</div>
 					</div>
@@ -290,7 +213,7 @@
 				<div class="col-sm-6 col-md-6 col-lg-6">
 					<div class="wow fadeInLeft" data-wow-delay="0.1s">
 					<div class="text-left">
-					<p>&copy;Copyright - Medicio Theme. All rights reserved.</p>
+					<p>&copy;Copyright - MJM website. All rights reserved.</p>
 					</div>
 					</div>
 				</div>
@@ -304,7 +227,7 @@
                                 Licensing information: https://bootstrapmade.com/license/
                                 Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Medicio
                             -->
-                            <a href="https://bootstrapmade.com/free-business-bootstrap-themes-website-templates/">Business Bootstrap Themes</a> by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                            <a href="">Hypermedia applications project</a> by <a href="">MJM</a>
                         </div>
 					</div>
 					</div>
@@ -333,4 +256,5 @@
     
 </body>
 
+    <script src="script.js"></script>
 </html>

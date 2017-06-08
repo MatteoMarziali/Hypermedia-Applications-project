@@ -8,6 +8,7 @@
     <meta name="author" content="">
 
     <title>Prova</title>
+    <a id="sort">sort</a>
 	
     <!-- css -->
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -56,7 +57,7 @@
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
 <!--				<li class="active"><a href="#intro">Home</a></li>-->
-                  <li class="wow tada"><a href="#service">Who we are</a></li>
+                  <li class="wow tada"><a href="doctorsalphabetical.html">Who we are</a></li>
                   <li class="wow flash"><a href="#service">News</a></li>
                   <li class="wow bounce"><a href="#service">Locations</a></li>
 				<li class="wow wobble"><a href="#service">Services</a></li>
@@ -92,7 +93,12 @@
 				</div>
 			</div>
 		</div>
-		
+        <div id="ordercontainer" class="cbp-l-filters-alignLeft">
+               <!-- <div id="order" data-filter="*" class="cbp-filter-item" onclick="setSort('name')">Order in alphabetic order (<div class="cbp-filter-counter"></div>)</div> -->
+            <div id="order" data-filter="*" class="cbp-filter-item" ><a href="doctorsalphabetical.html">Order in alphabetic order</a> (<div class="cbp-filter-counter"></div>)</div>
+                
+            </div>
+		<button id="nameasc"  style="background-color:#f174b6" onclick="setSort('age')"> Sort (+) </button>
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
