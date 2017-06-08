@@ -71,12 +71,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // /* Register REST entry point */
+
 app.get("/doctors", function(req, res) {
+    
     console.log("sono nella get con start");
-  let start = parseInt(_.get(req, "query.start", 0));
+  let start = parseInt(_.get(req, "query.start", 0));  //is the last parameter the default value?
   let limit = parseInt(_.get(req, "query.limit", 10));   //il numero era 5
   let sortby = _.get(req, "query.sort", "none");
+  let id = parseInt(_.get(req,"query.id",0));
   let myQuery = sqlDb("doctors");
+
+     console.log("id="+id);
 
   if (sortby === "age") {
     myQuery = myQuery.orderBy("date", "asc");
@@ -85,10 +90,19 @@ app.get("/doctors", function(req, res) {
   } else if (sortby === "name"){
     myQuery = myQuery.orderBy("name", "asc");
   }
+    /*
+    if(id !== 0)myQuery.where("id", id).limit(limit).offset(start).then(result => {
+    res.send(JSON.stringify(result));
+  });
+  
+        */
+    
   myQuery.limit(limit).offset(start).then(result => {
     res.send(JSON.stringify(result));
   });
 });
+
+
 /*
 app.get("/doctors", function(req, res) {
     console.log("sono nella get senza start");
