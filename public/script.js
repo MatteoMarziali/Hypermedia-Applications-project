@@ -152,9 +152,9 @@ let count = 10;
 let sortby = "none"; /* Can be none, "+age", "-age"*/    //criteria for sorting, string variable
 
 function setSort(x) {  //these 3 functions are connected to the event of the buttons
- if(x=="name")
+ //if(x=="name")
     sortby = x;
-  //updateDoctorsList();  //they then invoke updatedoctorslist, that is meant to access the doctors on the server with the current criteria, the fetch..
+  updateDoctorsList();  //they then invoke updatedoctorslist, that is meant to access the doctors on the server with the current criteria, the fetch..
 }
 
 function nextPage() {
@@ -179,6 +179,7 @@ function updateDoctorsList() {  //sends a request, gets the rsults, and then rew
       data.map(addRow);
     }).then(function(){
       
+        
       console.log("Executing cubeportfolio");
       
       var gridContainer = $('#grid-container'),
@@ -294,7 +295,7 @@ function startup() {   //hides all the data that should not be presented
   $(`#responseDataKO`).hide();
   $("#addDoctorFormDiv").hide();
   //calculateOrder();
-    calculateSort();
+    //calculateSort();
     //setSort("name");
   updateDoctorsList();
 }

@@ -114,12 +114,13 @@
             });
 
         }
-		
-/*		
+				
 (function ($, window, document, undefined) {
 
     var gridContainer = $('#grid-container'),
         filtersContainer = $('#filters-container');
+    
+    var doctorClick = $('#doctorclick');
 
 	// init cubeportfolio
     gridContainer.cubeportfolio({
@@ -181,6 +182,14 @@
         }
     });
 
+    
+    doctorClick.on('click', function(){
+        
+        console.log("doctorclick function");
+    });
+    
+    
+    
     // add listener for filters click
     filtersContainer.on('click', '.cbp-filter-item', function (e) {
 
@@ -212,7 +221,7 @@
     gridContainer.cubeportfolio('showCounter', filtersContainer.find('.cbp-filter-item'));
 
 })(jQuery, window, document);
-		*/
+		
 	
 })(jQuery);
 $(window).load(function() {
