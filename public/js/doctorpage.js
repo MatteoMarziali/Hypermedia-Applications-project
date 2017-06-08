@@ -16,7 +16,7 @@ $(window).ready(function () {   //jquery
    //var idd=
 //console.log("idd= "+getId());
     var iddd = getId();
-    //getDoctor(iddd);
+    getDoctor(iddd);
     //assigning variables to containers in html
     
     //storing the doctor fullname and everything to use later on
@@ -72,7 +72,7 @@ dsrgdrgdgdrc ciaaooo
                 
     
 `
-  );*/
+  );
     
     
 }
