@@ -90,12 +90,12 @@ app.get("/doctors", function(req, res) {
   } else if (sortby === "name"){
     myQuery = myQuery.orderBy("name", "asc");
   }
-    /*
+    
     if(id !== 0)myQuery.where("id", id).limit(limit).offset(start).then(result => {
     res.send(JSON.stringify(result));
   });
   
-        */
+        
     
   myQuery.limit(limit).offset(start).then(result => {
     res.send(JSON.stringify(result));
