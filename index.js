@@ -89,7 +89,7 @@ app.get("/doctors", function(req, res) {
     res.send(JSON.stringify(result));
   });
 });
-
+/*
 app.get("/doctors", function(req, res) {
     console.log("sono nella get senza start");
   //let start = parseInt(_.get(req, "query.start", 0));
@@ -108,6 +108,7 @@ app.get("/doctors", function(req, res) {
     res.send(JSON.stringify(result));
   });
 });
+*/
 
 app.delete("/doctors/:id", function(req, res) {
   let idn = parseInt(req.params.id);
