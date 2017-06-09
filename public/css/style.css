@@ -2096,9 +2096,15 @@ a.btn:focus{
 #order{
     align-content: center;
     align-self: center;
-    position: relative; 
-    left: 39.5%;
+    position: relative;
     
+    padding-left: 70%;
+    
+}
+
+#order:hover span { display: none; }
+#order:hover:after {
+  content: "Click to display all doctors in alphabetical order";
 }
 
 #ordercontainer{
