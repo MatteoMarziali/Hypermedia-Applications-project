@@ -38,7 +38,7 @@ function addRow(doctor) {
     `
 
                 <li class="cbp-item psychiatrist" >
-                        <a href="doctors/member1.html?id=${doctor.id}" class="cbp-caption cbp-singlePage">
+                        <a href="doctors/member1.html?id=${doctor.id}" class="cbp-caption cbp-singlePage wow flipInY">
                             <div class="cbp-caption-defaultWrap">
                                 <img src="img/team/${doctor.id}.jpg" alt="" width="100%">
                             </div>
