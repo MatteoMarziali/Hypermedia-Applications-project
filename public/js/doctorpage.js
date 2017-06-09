@@ -1,6 +1,6 @@
-var doctor_fullname;
-var doctor_description;
-var doctor_services;
+var doctorName;
+var doctorDescription;
+var doctorPosition;
 var doctor_image;
 var doctor_id;
 var doctor_list;
@@ -8,6 +8,11 @@ var doctor_list;
 //variables that are storing the element
 
 $(window).ready(function () {   //jquery
+    
+    doctorName = $("#doctorname");
+    doctorPosition = $("#doctorposition");
+    
+    
     
     
     //console.log("ciao");
@@ -68,6 +73,7 @@ function addDoctorInfo(doctor) {    //it gave me a big problem if I called this 
 ${doctor.id} e poi ${doctor.service}   e poi ${doctor.name}
 
 
+
 dsrgdrgdgdrc ciaaooo
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, perspiciatis, corporis, iusto a saepe iste ea odit quas fugit amet nisi adipisci excepturi ipsam quae asperiores sit blanditiis sunt ducimus magni eos non et quos dignissimos quaerat aspernatur. Enim, temporibus, ullam, vitae, accusantium veniam ut odio magni nobis animi ratione eaque at aliquam eos error quas eum unde laudantium quisquam dolores voluptas velit corporis fuga! Error, soluta, consequatur, excepturi earum laudantium ab magnam vitae eligendi consectetur dicta quo nesciunt eveniet facere iusto praesentium aliquid impedit tempora nobis deleniti fugiat corporis maiores cupiditate provident veritatis quod odio nulla vel ratione quas.
 	</div>
@@ -76,6 +82,9 @@ dsrgdrgdgdrc ciaaooo
     
 `
   );
+    
+   doctorName.text(doctor.name);
+    doctorPosition.text(doctor.service);
     
     
 }

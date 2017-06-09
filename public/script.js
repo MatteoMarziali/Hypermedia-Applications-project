@@ -1,4 +1,6 @@
 /* eslint-env browser */
+
+var doctorsSorted = false;
 console.log("# Starting up the application");
 
 function clearList() {
@@ -48,7 +50,7 @@ function addRow(doctor) {
                                 </div>
                             </div>
                         </a>
-                        <a href="doctors/member1.html" class="cbp-singlePage cbp-l-grid-team-name">${doctor.name}</a>
+                        <a href="doctors/member1.html?id=${doctor.id}" class="cbp-singlePage cbp-l-grid-team-name">${doctor.name}</a>
                         <div class="cbp-l-grid-team-position">${doctor.service}</div>
                     </li>
                 
@@ -154,7 +156,11 @@ let sortby = "none"; /* Can be none, "+age", "-age"*/    //criteria for sorting,
 function setSort(x) {  //these 3 functions are connected to the event of the buttons
  //if(x=="name")
     sortby = x;
-  updateDoctorsList();  //they then invoke updatedoctorslist, that is meant to access the doctors on the server with the current criteria, the fetch..
+   // if(doctorsSorted===false){
+    jQuery("#grid-container").cubeportfolio('destroy');
+  updateDoctorsList(); 
+    //doctorsSorted=true;}
+//they then invoke updatedoctorslist, that is meant to access the doctors on the server with the current criteria, the fetch..
 }
 
 function nextPage() {
@@ -170,7 +176,10 @@ function previousPage() {
 }
 
 function updateDoctorsList() {  //sends a request, gets the rsults, and then rewrites the table row by row
-  fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
+    
+    
+    fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
+    
     .then(function(response) {
       return response.json();
     })

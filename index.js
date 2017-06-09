@@ -91,15 +91,15 @@ app.get("/doctors", function(req, res) {
     myQuery = myQuery.orderBy("name", "asc");
   }
     
-    if(id !== 0)myQuery.where("id", id).limit(limit).offset(start).then(result => {
+    if(id !== 0){
+        myQuery.where("id", id).limit(1).offset(start).then(result => {
     res.send(JSON.stringify(result));
-  });
-  
-        
-    
+  });  
+    }
+    else{
   myQuery.limit(limit).offset(start).then(result => {
     res.send(JSON.stringify(result));
-  });
+  }); }
 });
 
 

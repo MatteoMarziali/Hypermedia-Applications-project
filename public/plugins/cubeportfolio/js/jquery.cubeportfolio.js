@@ -4772,7 +4772,7 @@
             var t = $.data(this, 'cubeportfolio');
 
             if (t) {
-                //throw new Error('cubeportfolio is already initialized. Please destroy it before initialize again!');
+                throw new Error('cubeportfolio is already initialized. Please destroy it before initialize again!');
             }
 
             // create new object attached to this element
