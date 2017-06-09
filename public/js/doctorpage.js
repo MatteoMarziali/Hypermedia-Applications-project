@@ -1,7 +1,7 @@
 var doctorName;
 var doctorDescription;
 var doctorPosition;
-var doctor_image;
+var doctorImage;
 var doctor_id;
 var doctor_list;
 
@@ -11,6 +11,7 @@ $(window).ready(function () {   //jquery
     
     doctorName = $("#doctorname");
     doctorPosition = $("#doctorposition");
+    doctorImage=$("#doctorimage");
     
     
     
@@ -85,6 +86,9 @@ dsrgdrgdgdrc ciaaooo
     
    doctorName.text(doctor.name);
     doctorPosition.text(doctor.service);
+    
+    //doctorImage.src("img/team/"+doctor.id+".jpg");
+   doctorImage.attr("src","img/team/"+doctor.id+".jpg");
     
     
 }
