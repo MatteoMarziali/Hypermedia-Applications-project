@@ -5,6 +5,11 @@ var doctorImage;
 var doctorLocation;
 var doctor_list;
 
+let start = 0;
+let count = 10;
+let sortby = "none";
+let id= 1;
+
 //variables that are storing the element
 
 $(window).ready(function () {   //jquery
@@ -24,7 +29,7 @@ $(window).ready(function () {   //jquery
    //var idd=
 //console.log("idd= "+getId());
     var iddd = getId();
-    getDoctor(iddd);
+    //getDoctor(iddd);
     //assigning variables to containers in html
     
     //storing the doctor fullname and everything to use later on
@@ -95,6 +100,28 @@ dsrgdrgdgdrc ciaaooo
     
     
 }
+
+function fetchDoctor() {  //sends a request, gets the rsults, and then rewrites the table row by row
+    
+    
+    fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
+    
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(data) {
+      console.log("fetched doctor");
+    });
+}
+
+
+function startUp() {   //hides all the data that should not be presented
+    
+  fetchDoctor();
+}
+
+
+startUp();
 
 
 
