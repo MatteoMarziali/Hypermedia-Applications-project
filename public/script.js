@@ -51,7 +51,7 @@ function addRow(doctor) {
                             </div>
                         </a>
                         <a href="doctors/member1.html?id=${doctor.id}" class="cbp-singlePage cbp-l-grid-team-name">${doctor.name}</a>
-                        <div class="cbp-l-grid-team-position">${doctor.service}</div>
+                        <div class="cbp-l-grid-team-position">${doctor.position}</div>
                     </li>
                 
     

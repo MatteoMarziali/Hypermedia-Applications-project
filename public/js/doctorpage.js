@@ -3,7 +3,11 @@ var doctorDescription;
 var doctorPosition;
 var doctorImage;
 var doctorLocation;
-var doctor_list;
+var doctorAge;
+var doctorResponsible;
+var doctorEmail;
+var doctorService;
+
 
 //variables that are storing the element
 
@@ -13,6 +17,10 @@ $(window).ready(function () {   //jquery
     doctorPosition = $("#doctorposition");
     doctorImage=$("#doctorimage");
     doctorLocation=$("#doctorlocation");
+     doctorAge=$("#doctorage");
+ doctorResponsible=$("#doctorResponsible");
+ doctorEmail=$("#doctorEmail");
+ doctorService=$("#doctorService");
     
     
     
@@ -73,25 +81,41 @@ function addDoctorInfo(doctor) {    //it gave me a big problem if I called this 
   $("#prova").append(
     `
 <div>
-${doctor.id} e poi ${doctor.service}   e poi ${doctor.name}
+To make an appointment with one of our doctor use the form:
+
+</div>
 
 
-
-dsrgdrgdgdrc ciaaooo
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum, perspiciatis, corporis, iusto a saepe iste ea odit quas fugit amet nisi adipisci excepturi ipsam quae asperiores sit blanditiis sunt ducimus magni eos non et quos dignissimos quaerat aspernatur. Enim, temporibus, ullam, vitae, accusantium veniam ut odio magni nobis animi ratione eaque at aliquam eos error quas eum unde laudantium quisquam dolores voluptas velit corporis fuga! Error, soluta, consequatur, excepturi earum laudantium ab magnam vitae eligendi consectetur dicta quo nesciunt eveniet facere iusto praesentium aliquid impedit tempora nobis deleniti fugiat corporis maiores cupiditate provident veritatis quod odio nulla vel ratione quas.
-	</div>
                 
                 
     
 `
   );
+
+   {
+    "id": 1,
+    "name": "Kaniel Outis",
+    "date":1988,
+    "sex":"male",
+    "email":"kaniel.outis@mjm.com",
+    "location":"San Donato",
+    "position":"Plastic Surgeon",
+    "responsible":"Plastic Surgery",
+    "service": "Plastic Surgery"
+  }
+
     
    doctorName.text(doctor.name);
-    doctorPosition.text("Service: "+doctor.service);
+    doctorPosition.text("Service: "+doctor.position);
+     let age = new Date().getFullYear() - doctor.date;
+    doctorAge.text("Age:"+age);
+    doctorEmail.text(doctor.email);
+    doctorService.text(doctor.service);
     
-    //doctorImage.src("img/team/"+doctor.id+".jpg");
    doctorImage.attr("src","img/team/"+doctor.id+".jpg");
    doctorLocation.text("Location: "+doctor.location);
+
+   doctorResponsible.text(doctor.responsible);
     
     
 }
