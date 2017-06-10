@@ -45,7 +45,7 @@ function addRow(doctor) {
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
                                     <div class="cbp-l-caption-body">
-                                        <div class="cbp-l-caption-text">VIEW PROFILE</div>
+                                        <div class="cbp-l-caption-text">OPEN GUIDED TOUR</div>
                                     </div>
                                 </div>
                             </div>

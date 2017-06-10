@@ -2148,5 +2148,7 @@ a.btn:focus{
   
 }
 
+a.overlay { width: 100%; height:100%; position: absolute; }
+
 /*Finished Mirko properties, you can touch :D*/
 

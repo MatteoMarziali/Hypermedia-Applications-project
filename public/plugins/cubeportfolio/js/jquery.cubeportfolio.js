@@ -1211,6 +1211,9 @@
                 t.wrap.detach();
 
             }
+            
+            //Mirko: changed this
+            window.location.reload(false); 
 
         },
 

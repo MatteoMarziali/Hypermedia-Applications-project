@@ -7,6 +7,7 @@ var doctorAge;
 var doctorResponsible;
 var doctorEmail;
 var doctorService;
+var gotoProfile;
 
 
 //variables that are storing the element
@@ -21,7 +22,7 @@ $(window).ready(function () {   //jquery
  doctorResponsible=$("#doctorresponsible");
  doctorEmail=$("#doctoremail");
  doctorService=$("#doctorservice");
-    
+   // gotoProfile=$("#gotoprofile");
     
     
     
@@ -98,11 +99,13 @@ To make an appointment with one of our doctor use the form:
     doctorPosition.text("Position: "+doctor.position);
      let age = new Date().getFullYear() - doctor.date;
     doctorAge.text("Age:"+age);
+    doctorLocation.text("Location: "+doctor.location);
     doctorEmail.text("Email: "+doctor.email);
     doctorService.text("Service: "+doctor.service);
     
    doctorImage.attr("src","img/team/"+doctor.id+".jpg");
-   doctorLocation.text("Location: "+doctor.location);
+   
+    //gotoProfile.attr("href","../singledoctor.html"+"?id="+doctor.id);
 
    doctorResponsible.text("Service responsible: "+doctor.responsible);
     
