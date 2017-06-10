@@ -70,6 +70,16 @@ function getDoctor(id) {  //sends a request, gets the rsults, and then rewrites 
   });
 };
 
+function addDoctorFields(doctor) {    //it gave me a big problem if I called this function addRow, it probably had a conflict with the call in anothe
+doctorName.text(doctor.name);
+    doctorPosition.text("Service: "+doctor.service);
+    
+    //doctorImage.src("img/team/"+doctor.id+".jpg");
+   doctorImage.attr("src","img/team/"+doctor.id+".jpg");
+   doctorLocation.text("Location: "+doctor.location);
+    
+    
+}
 
 
 function addDoctorInfo(doctor) {    //it gave me a big problem if I called this function addRow, it probably had a conflict with the call in another js
@@ -102,17 +112,88 @@ dsrgdrgdgdrc ciaaooo
 }
 
 function fetchDoctor() {  //sends a request, gets the rsults, and then rewrites the table row by row
+    var docId=getId();
+    //console.log("id del dottore da fetchare:"+docId);
     
-    
-    fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
+    fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}&id=${docId}`)   //we draw again every time the UI, seems inefficient but it's not
     
     .then(function(response) {
       return response.json();
     })
     .then(function(data) {
+      data.map(addDoctorFields);
       console.log("fetched doctor");
+    }).then(function(){
+      
+        
+      console.log("Executing cubeportfolio");
+      
+      var gridContainer = $('#grid-container'),
+        filtersContainer = $('#filters-container');
+
+	// init cubeportfolio
+    gridContainer.cubeportfolio({
+
+        defaultFilter: '*',
+
+        animationType: 'sequentially',
+
+        gapHorizontal: 50,
+
+        gapVertical: 40,
+
+        gridAdjustment: 'responsive',
+
+        caption: 'fadeIn',
+
+        displayType: 'lazyLoading',
+
+        displayTypeSpeed: 100,
+
+        // lightbox
+        lightboxDelegate: '.cbp-lightbox',
+        lightboxGallery: true,
+        lightboxTitleSrc: 'data-title',
+        lightboxShowCounter: true,
+
+        // singlePage popup
+        singlePageDelegate: '.cbp-singlePage',
+        singlePageDeeplinking: true,
+        singlePageStickyNavigation: true,
+        singlePageShowCounter: true,
+        singlePageCallback: function (url, element) {
+
+            // to update singlePage content use the following method: this.updateSinglePage(yourContent)
+            var t = this;
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+                dataType: 'html',
+                timeout: 5000
+            })
+            .done(function(result) {
+                t.updateSinglePage(result);
+            })
+            .fail(function() {
+                t.updateSinglePage("Error! Please refresh the page!");
+            });
+
+        },
+
+        // singlePageInline
+        singlePageInlineDelegate: '.cbp-singlePageInline',
+        singlePageInlinePosition: 'above',
+        singlePageInlineShowCounter: true,
+        singlePageInlineInFocus: true,
+        singlePageInlineCallback: function(url, element) {
+            // to update singlePageInline content use the following method: this.updateSinglePageInline(yourContent)
+        }
     });
+    })
 }
+            
+
 
 
 function startUp() {   //hides all the data that should not be presented
