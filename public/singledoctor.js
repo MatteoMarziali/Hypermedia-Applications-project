@@ -19,7 +19,7 @@ $(window).ready(function () { //jquery
 
   doctorName = $("#doctorname");
   doctorPosition = $("#doctorposition");
-  doctorImage = $("#doctorimage");
+  doctorImage = $("#doctorimagesinglepage");
   doctorLocation = $("#doctorlocation");
   doctorAge = $("#doctorage");
   doctorResponsible = $("#doctorresponsible");
