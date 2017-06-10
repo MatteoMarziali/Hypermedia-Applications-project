@@ -86,7 +86,7 @@ function addDoctorFields(doctor) { //it gave me a big problem if I called this f
   doctorLocation.text("Location: " + doctor.location);
 
      let age = new Date().getFullYear() - doctor.date;
-    doctorAge.text("Age:"+age);
+    doctorAge.text("Age: "+age);
     doctorEmail.text("Email: "+doctor.email);
     doctorService.text("Service: "+doctor.service);
     

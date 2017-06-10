@@ -2093,6 +2093,8 @@ a.btn:focus{
 	}
 }
 
+/*Mirko properties, don't touch :D*/
+
 #order{
      align-content: center; 
     align-self: center; 
@@ -2100,7 +2102,7 @@ a.btn:focus{
 
      
     padding-left: 70%; 
-    
+
     
 }
 
@@ -2128,3 +2130,23 @@ a.btn:focus{
 	padding-left: 20%;
 	padding-right: 20%;
 }
+
+#responsib:hover span { display: none; }
+#responsib:hover:after {
+  content: "Click to show the service this doctor is responsible for";
+}
+#serv:hover span { display: none; }
+#serv:hover:after {
+  content: "Click to show the service this doctor works in";
+}
+
+#responsib, #serv{
+     align-content: center; 
+    align-self: center; 
+    position: relative;   
+    padding-left: 60%; 
+  
+}
+
+/*Finished Mirko properties, you can touch :D*/
+
