@@ -125,8 +125,14 @@ function fetchDoctor() {  //sends a request, gets the rsults, and then rewrites 
       console.log("fetched doctor");
     }).then(function(){
       
-        
-      console.log("Executing cubeportfolio");
+        //initCubePortfolio();
+       
+      
+  });
+}
+
+function initCubePortfolio(){
+    console.log("Executing cubeportfolio");
       
       var gridContainer = $('#grid-container'),
         filtersContainer = $('#filters-container');
@@ -190,7 +196,36 @@ function fetchDoctor() {  //sends a request, gets the rsults, and then rewrites 
             // to update singlePageInline content use the following method: this.updateSinglePageInline(yourContent)
         }
     });
-    })
+
+    // add listener for filters click
+    filtersContainer.on('click', '.cbp-filter-item', function (e) {
+
+        var me = $(this), wrap;
+
+        // get cubeportfolio data and check if is still animating (reposition) the items.
+        if ( !$.data(gridContainer[0], 'cubeportfolio').isAnimating ) {
+
+            if ( filtersContainer.hasClass('cbp-l-filters-dropdown') ) {
+                wrap = $('.cbp-l-filters-dropdownWrap');
+
+                wrap.find('.cbp-filter-item').removeClass('cbp-filter-item-active');
+
+                wrap.find('.cbp-l-filters-dropdownHeader').text(me.text());
+
+                me.addClass('cbp-filter-item-active');
+            } else {
+                me.addClass('cbp-filter-item-active').siblings().removeClass('cbp-filter-item-active');
+            }
+
+        }
+
+        // filter the items
+        gridContainer.cubeportfolio('filter', me.data('filter'), function () {});
+
+    });
+
+    // activate counter for filters
+    gridContainer.cubeportfolio('showCounter', filtersContainer.find('.cbp-filter-item'));
 }
             
 
@@ -202,7 +237,7 @@ function startUp() {   //hides all the data that should not be presented
 }
 
 
-startUp();
+//startUp();
 
 
 

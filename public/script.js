@@ -188,8 +188,13 @@ function updateDoctorsList() {  //sends a request, gets the rsults, and then rew
       data.map(addRow);
     }).then(function(){
       
-        
-      console.log("Executing cubeportfolio");
+      initCubePortfolio();
+      
+  });
+}
+
+function initCubePortfolio(){
+    console.log("Executing cubeportfolio");
       
       var gridContainer = $('#grid-container'),
         filtersContainer = $('#filters-container');
@@ -283,8 +288,6 @@ function updateDoctorsList() {  //sends a request, gets the rsults, and then rew
 
     // activate counter for filters
     gridContainer.cubeportfolio('showCounter', filtersContainer.find('.cbp-filter-item'));
-      
-  });
 }
 
 function calculateSort(){
