@@ -2109,11 +2109,22 @@ a.btn:focus{
   content: "Click to display all doctors in alphabetical order";
 }
 
-#ordercontainer{
+#doctorcontainer{
+    display: inline-block;
     
     
-   
-     
-    
-    
+}
+
+#imagecontainer{
+	width: 80%;
+
+}
+
+#textcontainer{
+	width: 20%;
+}
+
+#doctorimage{
+	padding-left: 20%;
+	padding-right: 20%;
 }
