@@ -125,7 +125,7 @@ function fetchDoctor() {  //sends a request, gets the rsults, and then rewrites 
       console.log("fetched doctor");
     }).then(function(){
       
-        //initCubePortfolio();
+        initCubePortfolio();
        
       
   });
@@ -237,7 +237,7 @@ function startUp() {   //hides all the data that should not be presented
 }
 
 
-//startUp();
+startUp();
 
 
 

@@ -30,6 +30,8 @@ function initSqlDB() {
   }
 }
 
+
+
 function initDb() {   //we first have to specify the schema of the database
   return sqlDb.schema.hasTable("doctors").then(exists => {
     if (!exists) {   //if it does not exist we're gonna populate it
@@ -39,10 +41,10 @@ function initDb() {   //we first have to specify the schema of the database
           table.string("name");    //specifiying fields of the table
           table.integer("date").unsigned();
           table.enum("sex", ["male", "female"]);
-          table.integer("phone");
           table.string("email");
           table.string("location");
-          table.string("area");
+          table.string("position");
+          table.string("responsible");
           table.string("service");
         })
         .then(() => {     //we populate with the data we had last time
@@ -103,53 +105,16 @@ app.get("/doctors", function(req, res) {
 });
 
 
-/*
-app.get("/doctors", function(req, res) {
-    console.log("sono nella get senza start");
-  //let start = parseInt(_.get(req, "query.start", 0));
-  let limit = parseInt(_.get(req, "query.limit", 2));   //il numero era 5
-  let sortby = _.get(req, "query.sort", "none");
-  let myQuery = sqlDb("doctors");
-
-  if (sortby === "age") {
-    myQuery = myQuery.orderBy("date", "asc");
-  } else if (sortby === "-age") {
-    myQuery = myQuery.orderBy("date", "desc");
-  } else if (sortby === "name"){
-    myQuery = myQuery.orderBy("name", "asc");
-  }
-  myQuery.limit(limit).then(result => {
-    res.send(JSON.stringify(result));
-  });
-});
-*/
-
-app.delete("/doctors/:id", function(req, res) {
-  let idn = parseInt(req.params.id);
-  sqlDb("doctors").where("id", idn).del().then(() => {
-    res.status(200);
-    res.send({ message: "ok!!!" });
-  });
-});
-
-app.delete("/doctors/:id",function(req,res){   //callback function
-let idn= parseInt(req.params.id);  //id contains the :id that we specified
-doctorsList=_.filter(doctorsList, p=>p.id !==idn);   //filter takes the array , p freccia vuol dire che fa una funzione
-             //everything that is not in idn whould be kept in the petlist
-res.status(200);     //status code
-res.send({message:"ok"}); //json object associated with the request
-}) //if i want an additional variable, i have to specify the parameter
-
 
 app.post("/doctors", function(req, res) {
   let toappend = {
     name: req.body.name,
-    sex: req.body.sex,
     date: req.body.date,
-    phone: req.body.phone,
+    sex: req.body.sex,
     email: req.body.email,
     location: req.body.location,
-    area: req.body.area,
+    position: req.body.position,
+    responsible: req.body.responsible,
     service: req.body.service
   };
   sqlDb("doctors").insert(toappend).then(ids => {
