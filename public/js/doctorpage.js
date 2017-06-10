@@ -22,7 +22,7 @@ $(window).ready(function () {   //jquery
  doctorResponsible=$("#doctorresponsible");
  doctorEmail=$("#doctoremail");
  doctorService=$("#doctorservice");
-   // gotoProfile=$("#gotoprofile");
+ gotoProfile=$("#gotoprofile");
     
     
     
@@ -105,7 +105,7 @@ To make an appointment with one of our doctor use the form:
     
    doctorImage.attr("src","img/team/"+doctor.id+".jpg");
    
-    //gotoProfile.attr("href","../singledoctor.html"+"?id="+doctor.id);
+    gotoProfile.attr("href","../singledoctor.html"+"?id="+doctor.id);
 
    doctorResponsible.text("Service responsible: "+doctor.responsible);
     
