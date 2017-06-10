@@ -18,9 +18,9 @@ $(window).ready(function () {   //jquery
     doctorImage=$("#doctorimage");
     doctorLocation=$("#doctorlocation");
      doctorAge=$("#doctorage");
- doctorResponsible=$("#doctorResponsible");
- doctorEmail=$("#doctorEmail");
- doctorService=$("#doctorService");
+ doctorResponsible=$("#doctorresponsible");
+ doctorEmail=$("#doctoremail");
+ doctorService=$("#doctorservice");
     
     
     
@@ -92,30 +92,19 @@ To make an appointment with one of our doctor use the form:
 `
   );
 
-   {
-    "id": 1,
-    "name": "Kaniel Outis",
-    "date":1988,
-    "sex":"male",
-    "email":"kaniel.outis@mjm.com",
-    "location":"San Donato",
-    "position":"Plastic Surgeon",
-    "responsible":"Plastic Surgery",
-    "service": "Plastic Surgery"
-  }
-
+ 
     
    doctorName.text(doctor.name);
-    doctorPosition.text("Service: "+doctor.position);
+    doctorPosition.text("Position: "+doctor.position);
      let age = new Date().getFullYear() - doctor.date;
     doctorAge.text("Age:"+age);
-    doctorEmail.text(doctor.email);
-    doctorService.text(doctor.service);
+    doctorEmail.text("Email: "+doctor.email);
+    doctorService.text("Service: "+doctor.service);
     
    doctorImage.attr("src","img/team/"+doctor.id+".jpg");
    doctorLocation.text("Location: "+doctor.location);
 
-   doctorResponsible.text(doctor.responsible);
+   doctorResponsible.text("Service responsible: "+doctor.responsible);
     
     
 }
