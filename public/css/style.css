@@ -972,6 +972,12 @@ Elements
 
 .badge.custom-badge.red {
 	background-color: #e9372e;
+} 
+
+/*added by mirko, don't touch*/
+
+.badge.custom-badge.purple {
+	background-color: #730099;
 }
 
 /* box */
@@ -2093,7 +2099,7 @@ a.btn:focus{
 	}
 }
 
-/*Mirko properties, don't touch :D*/
+/*Mirko properties, don't touch :D
 
 #order{
      align-content: center; 
@@ -2150,5 +2156,5 @@ a.btn:focus{
 
 a.overlay { width: 100%; height:100%; position: absolute; }
 
-/*Finished Mirko properties, you can touch :D*/
+Finished Mirko properties, you can touch :D*/
 

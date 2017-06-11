@@ -11,7 +11,7 @@ var doctorService;
 let start = 0;
 let count = 10;
 let sortby = "none";
-let id = 1;
+let id = 1;  //default values
 
 //variables that are storing the element
 
@@ -82,7 +82,7 @@ function addDoctorFields(doctor) { //it gave me a big problem if I called this f
   doctorPosition.text("Position: " + doctor.position);
 
   //doctorImage.src("img/team/"+doctor.id+".jpg");
-  doctorImage.attr("src", "img/team/" + doctor.id + ".jpg");
+  doctorImage.attr("src", "/assets/img/doctors/" + doctor.id + ".jpg");
   doctorLocation.text("Location: " + doctor.location);
 
      let age = new Date().getFullYear() - doctor.date;
@@ -90,8 +90,8 @@ function addDoctorFields(doctor) { //it gave me a big problem if I called this f
     doctorEmail.text("Email: "+doctor.email);
     doctorService.text("Service: "+doctor.service);
     
-   doctorImage.attr("src","img/team/"+doctor.id+".jpg");
-   doctorLocation.text("Location: "+doctor.location);
+   //doctorImage.attr("src","img/team/"+doctor.id+".jpg");
+   //doctorLocation.text("Location: "+doctor.location);
 
    doctorResponsible.text("Service responsible: "+doctor.responsible);
 
@@ -122,7 +122,7 @@ dsrgdrgdgdrc ciaaooo
   doctorPosition.text("Service: " + doctor.service);
 
   //doctorImage.src("img/team/"+doctor.id+".jpg");
-  doctorImage.attr("src", "img/team/" + doctor.id + ".jpg");
+  doctorImage.attr("src", "/assets/img/doctors/" + doctor.id + ".jpg");
   doctorLocation.text("Location: " + doctor.location);
 
 

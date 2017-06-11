@@ -103,9 +103,9 @@ To make an appointment with one of our doctor use the form:
     doctorEmail.text("Email: "+doctor.email);
     doctorService.text("Service: "+doctor.service);
     
-   doctorImage.attr("src","img/team/"+doctor.id+".jpg");
+   doctorImage.attr("src","/assets/img/doctors/"+doctor.id+".jpg");
    
-    gotoProfile.attr("href","../singledoctor.html"+"?id="+doctor.id);
+    gotoProfile.attr("href","/pages/singledoctor.html"+"?id="+doctor.id);
 
    doctorResponsible.text("Service responsible: "+doctor.responsible);
     
