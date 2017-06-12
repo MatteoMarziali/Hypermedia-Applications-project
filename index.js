@@ -79,15 +79,14 @@ app.use(bodyParser.urlencoded({
 app.get("/doctors", function (req, res) {
 
     console.log("sono nella get con start");
-    let start = parseInt(_.get(req, "query.start", 0)); //is the last parameter the default value?
-    let limit = parseInt(_.get(req, "query.limit", 10)); //il numero era 5
+    let start = parseInt(_.get(req, "query.start", 0)); 
+    let limit = parseInt(_.get(req, "query.limit", 10)); 
     let sortby = _.get(req, "query.sort", "none");
     let id = parseInt(_.get(req, "query.id", 0));
     let location = _.get(req, "query.location", "none");
     let myQuery = sqlDb("doctors");
 
 
-    console.log("id=" + id);
 
     if (sortby === "age") {
         myQuery = myQuery.orderBy("date", "asc");

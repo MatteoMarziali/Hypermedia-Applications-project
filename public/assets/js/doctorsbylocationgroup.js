@@ -1,6 +1,8 @@
-/* eslint-env browser */
 
-var doctorsSorted = false;
+
+let start = 0;
+let count = 10;
+let sortby = "none"; /* Can be none, "+age", "-age", "name"*/    //criteria for sorting, string variable
 
 
 function clearList() {
@@ -30,8 +32,7 @@ function addRow(doctor) {
                         </a>
                         <a href="/pages/guidedtourdoctor.html?id=${doctor.id}" class="cbp-singlePage cbp-l-grid-team-name">${doctor.name}</a>
                         <div class="cbp-l-grid-team-position">${doctor.position}</div>
-                    </li>
-                
+                    </li>          
     
 `
   );
@@ -40,28 +41,12 @@ function addRow(doctor) {
 
 
 
-
-function formDataAsJSON(formData) {
-  let x = {};
-  for (var pair of formData.entries()) {
-    x[pair[0]] = pair[1];
-  }
-  return JSON.stringify(x);
-}
-
-/* https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch */
-
-let start = 0;
-let count = 10;
-let sortby = "none"; /* Can be none, "+age", "-age"*/    //criteria for sorting, string variable
-
-function setSort(x) {  //these 3 functions are connected to the event of the buttons
- //if(x=="name")
+function setSort(x) {  
     sortby = x;
-   // if(doctorsSorted===false){
-    //jQuery("#grid-container").cubeportfolio('destroy');
+ 
+    jQuery("#grid-container").cubeportfolio('destroy');
   updateDoctorsList(); 
-    //doctorsSorted=true;}
+
 //they then invoke updatedoctorslist, that is meant to access the doctors on the server with the current criteria, the fetch..
 }
 
@@ -201,15 +186,9 @@ function getLocationName() {
 
 }
 
-function calculateOrder(){
-   // if(this.window.getSort())
-}
 
 function startup() {   //hides all the data that should not be presented
 
-  //calculateOrder();
-    //calculateSort();
-    //setSort("name");
   updateDoctorsList();
 }
 
