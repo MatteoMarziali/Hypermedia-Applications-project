@@ -1,0 +1,37 @@
+[
+    {
+        "name": "Plastic Surgery",
+        "referring_doctor_id": 1,
+        "locations": [{"name": "Segrate"}, {"name" : "San Donato Milanese"}],
+        "description": "Plastic surgery, the functional, structural, and aesthetic restoration of all manner of defects and deformities of the human body. Modern plastic surgery has evolved along two broad themes: reconstruction of anatomic defects and aesthetic enhancement of normal form. The surgical principles of plastic surgery remain focused on preserving vascularity, replacing like tissue with like tissue, respecting anatomic zones, and fostering wound healing by minimizing tissue trauma. Our clinic features a standard of excellence in personalized care that enables us to provide the quality cosmetic enhancement services that our patients deserve. We provide comprehensive treatment planning and follow strict standards to ensure your plastic surgery will go smoothly and achieve the results you desire",
+        "img": "../assets/img/services/plastic_surgery.jpg"
+    },
+    {
+        "name": "Orthodontics",
+        "referring_doctor_id": 2,
+        "locations" : [{"name": "Rozzano"}],
+        "description":"Through orthodontic treatment, problems like crooked or crowded teeth, an overbite or underbite, incorrect jaw position and disorders of the jaw joints are corrected. The benefits of orthodontic treatment include a healthier mouth, a more pleasing appearance, and teeth that are more likely to last a lifetime.",
+        "img":"../assets/img/services/orthodontics.jpg"
+    },
+    {
+        "name": "Radiology Exams",
+        "referring_doctor_id": 5,
+        "locations" : [{"name": "San Donato Milanese"}],
+        "description": "Radiology is a specialty that uses medical imaging to diagnose and treat diseases seen within the body. A variety of imaging techniques such as X-ray radiography, ultrasound, computed tomography (CT), nuclear medicine including positron emission tomography (PET), and magnetic resonance imaging (MRI) are used to diagnose and/or treat diseases. Interventional radiology is the performance of (usually minimally invasive) medical procedures with the guidance of imaging technologies. The acquisition of medical images is carried out by our Radiographers",
+        "img": "../assets/img/services/radiology_exams.jpg"
+    },
+    {
+        "name": "Rehabilitation",
+        "referring_doctor_id": 4,
+        "locations": [{"name": "Rozzano"}, {"name" : "San Donato Milanese"}],
+        "description": "Our clinic unites excellence in rehabilitation practice with forward-looking programs in research and education. The overarching goal is to provide a personalized rehabilitation experience for each patient — adult or pediatric, inpatient or outpatient. Staffed by board-certified physical medicine and rehabilitation (PM&R) specialists and other experienced rehabilitation professionals, the center is dedicated to inspiring hope, promoting independence and enhancing quality of life.",
+        "img":"../assets/img/services/rehabilitation.jpg"
+    },
+    {
+        "name": "Blood Tests",
+        "referring_doctor_id": 7,
+        "locations": [{"name": "Segrate"}, {"name" : "Rozzano"}],
+        "description": "A blood test is when a sample of blood is taken for testing in a laboratory.  A clinician who takes a blood sample is known as a phlebotomist. There are many reasons a doctor will request a blood test and they are one of the most common medical tests. Blood tests can assess general health, confirm a bacterial or viral infection and indicate how well organs such as the liver and kidneys are functioning and much more. ",
+        "img":"../assets/img/services/blood_tests.jpg"
+    }
+]

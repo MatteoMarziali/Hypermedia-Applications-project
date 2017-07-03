@@ -1,8 +1,6 @@
-
-
 let start = 0;
 let count = 10;
-let sortby = "none"; /* Can be none, "+age", "-age", "name"*/    //criteria for sorting, string variable
+let sortby = "none"; 
 
 
 function clearList() {
@@ -11,7 +9,7 @@ function clearList() {
 
 
 
-function addRow(doctor) {
+function addDoctor(doctor) {
   console.log("Adding row");
   let age = new Date().getFullYear() - doctor.date;   //getfullyear prende l'anno corrente della data corrente
   $("#ul-dottori").append(
@@ -61,7 +59,7 @@ function updateDoctorsList() {  //sends a request, gets the rsults, and then rew
     })
     .then(function(data) {
       clearList();
-      data.map(addRow);
+      data.map(addDoctor);
     }).then(function(){
       
         //init doctors plugin to display them properly
@@ -167,6 +165,16 @@ function initCubePortfolio(){
     gridContainer.cubeportfolio('showCounter', filtersContainer.find('.cbp-filter-item'));
 }
 
+function setDynamicTitle(){
+    var location=getLocationName();
+    var splitspaces=location.split("%20");
+    var locwithspaces="";
+    for(var i=0;i<splitspaces.length;i++){
+    locwithspaces=locwithspaces+splitspaces[i]+" ";
+        }
+    $("#title").text("Doctors serving in "+locwithspaces);
+}
+
 
 function getLocationName() {
   var query_string = {};
@@ -190,6 +198,7 @@ function getLocationName() {
 function startup() {   //hides all the data that should not be presented
 
   updateDoctorsList();
+  setDynamicTitle();
 }
 
 startup();

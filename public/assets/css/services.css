@@ -1,0 +1,7 @@
+#serviceimg img, .element img{
+    max-height: 250px;
+}
+
+.serviceElement{
+    margin-top: 40px;
+}

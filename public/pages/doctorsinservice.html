@@ -4,27 +4,31 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Page template for the Hypermedia Applications course technology part">
+    <meta name="description" content="Page Doctors">
     <meta name="author" content="Mirko Mantovani">
 
-    <title>PageTemplate</title>
+    <title>Doctors</title>
+    <a id="sort">sort</a>
 	
     <!-- css -->
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-	<link rel="stylesheet" type="text/css" href="plugins/cubeportfolio/css/cubeportfolio.min.css">
-	<link href="css/nivo-lightbox.css" rel="stylesheet" />
-	<link href="css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
-	<link href="css/owl.carousel.css" rel="stylesheet" media="screen" />
-    <link href="css/owl.theme.css" rel="stylesheet" media="screen" />
-	<link href="css/animate.css" rel="stylesheet" />
-    <link href="css/style.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" type="text/css" href="../plugins/cubeportfolio/css/cubeportfolio.min.css">
+	<link href="../css/nivo-lightbox.css" rel="stylesheet" />
+	<link href="../css/nivo-lightbox-theme/default/default.css" rel="stylesheet" type="text/css" />
+	<link href="../css/owl.carousel.css" rel="stylesheet" media="screen" />
+    <link href="../css/owl.theme.css" rel="stylesheet" media="screen" />
+	<link href="../css/animate.css" rel="stylesheet" />
+    <link href="../css/style.css" rel="stylesheet">
+    
+    <link href="/assets/css/doctors.css" rel="stylesheet">
 
 	<!-- boxed bg -->
-	<link id="bodybg" href="bodybg/bg1.css" rel="stylesheet" type="text/css" />
+	<link id="bodybg" href="../bodybg/bg1.css" rel="stylesheet" type="text/css" />
 	<!-- template skin -->
-	<link id="t-colors" href="color/default.css" rel="stylesheet">
-  
+	<link id="t-colors" href="../color/default.css" rel="stylesheet">
+    
+   
 </head>
 
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
@@ -41,23 +45,31 @@
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
                     <i class="fa fa-bars"></i>
                 </button>
-                <a class="navbar-brand" href="index.html">
-                    <img src="Images/MJMLogoTransparent.png" alt="" width="80" height="80" />
+                <a class="navbar-brand" href="/index.html">
+                    <img src="/assets/img/MJMLogoTransparent.png" alt="" width="80" height="80" />
                 </a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
 			  <ul class="nav navbar-nav">
-
-                  <li class="wow fadeInUp" data-wow-delay="0.0s"><a href="doctors/member1.html?id=1">Who we are</a></li>
-                  <li class="wow fadeInUp" data-wow-delay="0.2s"><a href="#service">News</a></li>
-                  <li class="wow fadeInUp" data-wow-delay="0.4s"><a href="#service">Locations</a></li>
-				<li class="wow fadeInUp" data-wow-delay="0.6s"><a href="#service">Services</a></li>
-                  <li class="wow fadeInUp" data-wow-delay="0.6s"><a href="#service">Medical areas</a></li>
-				<li class="wow fadeInUp" data-wow-delay="0.4s"><a href="#doctor">Doctors</a></li>
-				<li class="wow fadeInUp" data-wow-delay="0.2s"><a href="#pricing">Practical info</a></li>
-                  <li class="wow fadeInUp" data-wow-delay="0.0s"><a href="#service">FAQs</a></li>
+<!--				<li class="active"><a href="#intro">Home</a></li>-->
+                  <li class="wow fadeInUp" data-wow-delay="0.0s"><a href="/pages/WhoWeAre.html">Who we are</a></li>
+                  <li class="wow fadeInUp" data-wow-delay="0.2s"><a>News</a></li>
+                  <li class="wow fadeInUp" data-wow-delay="0.4s"><a href="/pages/Locations.html">Locations</a></li>
+				<li class="wow fadeInUp" data-wow-delay="0.6s"><a href="/pages/services.html">Services</a></li>
+                  <li class="wow fadeInUp" data-wow-delay="0.6s"><a>Medical areas</a></li>
+                  <li class="dropdown wow fadeInUp" data-wow-delay="0.4s">
+				  <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="badge custom-badge purple pull-right">Groups</span>Doctors <b class="caret"></b></a>
+				  <ul class="dropdown-menu">
+				    <li><a href="/pages/doctorsgroup.html">All doctors</a></li>
+					<li><a href="doctorsbylocation.html">Doctors by location</a></li>
+					<li><a >Doctors by service</a></li>
+                      <li><a >Doctors by area</a></li>
+				  </ul>
+				</li>
+				<li class="wow fadeInUp" data-wow-delay="0.2s"><a>Practical info</a></li>
+                  <li class="wow fadeInUp" data-wow-delay="0.0s"><a>FAQs</a></li>
 				<li class="dropdown">
 
 				</li>
@@ -69,22 +81,29 @@
     </nav>
 	
 
-	<!-- Section: content -->
+	
+
+	<!-- Section: doctors -->
     <section id="doctor" class="home-section bg-gray paddingbot-60">
 		<div class="container marginbot-50">
 			<div class="row">
 				<div class="col-lg-8 col-lg-offset-2">
 					<div>
 					<div class="section-heading text-center">
-					<h2 id="doctorclick" class="h-bold wow pulse" data-wow-delay="0.1s">Page Title</h2>
-					<p class="wow fadeInUpBig" data-wow-delay="0.1s">Page subtitle</p>
+					<h2 id="title" class="h-bold wow pulse" data-wow-delay="0.1s">Doctors</h2>
+					<p class="wow fadeInUpBig" data-wow-delay="0.1s">Ea melius ceteros oportere quo, pri habeo viderer facilisi ei</p>
 					</div>
 					</div>
 					<div class="divider-short wow fadeInDown"></div>
 				</div>
 			</div>
 		</div>
-      
+        <div id="ordercontainer" class="cbp-l-filters-alignLeft">
+              
+            <div id="order" data-filter="*" class="cbp-filter-item wow fadeInLeftBig" onclick="setSort('name')"
+                 data-wow-delay="0.9s"><span>Order in alphabetical order</span> </div>
+                
+            </div>
 		
 		<div class="container">
 			<div class="row">
@@ -93,9 +112,13 @@
 		
             <div id="grid-container" class="cbp-l-grid-team" >
                 
-               <!-- mettete le cose qui dentro -->
-
-
+                <ul id="ul-dottori">
+                    
+                    
+                    <!--I'm going to add doctors here dynamically -->
+                    
+                    
+                </ul>
             </div>
 			</div>
 			</div>
@@ -104,6 +127,9 @@
 	</section>
 	
 
+	
+		
+	
 
      <!-- /Section: footer -->        
 
@@ -204,7 +230,7 @@ proven experience at all stages of the clinical pathway
 					<div class="wow fadeInRight" data-wow-delay="0.1s">
 					<div class="text-right">
 						<div class="credits">
-                        
+                            
                             <a href="">Hypermedia applications project</a> by <a href="">MJM</a>
                         </div>
 					</div>
@@ -219,20 +245,23 @@ proven experience at all stages of the clinical pathway
 <a href="#" class="scrollup"><i class="fa fa-angle-up active"></i></a>
 
 	<!-- Core JavaScript Files -->
-    <script src="js/jquery.min.js"></script>	 
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.min.js"></script>
-	<script src="js/wow.min.js"></script>
-	<script src="js/jquery.scrollTo.js"></script>
-	<script src="js/jquery.appear.js"></script>
-	<script src="js/stellar.js"></script>
-	<script src="plugins/cubeportfolio/js/jquery.cubeportfolio.js"></script>
-	<script src="js/owl.carousel.min.js"></script>
-	<script src="js/nivo-lightbox.min.js"></script>
-    <script src="js/custom.js"></script>
+    <script src="../js/jquery.min.js"></script>	 
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.easing.min.js"></script>
+	<script src="../js/wow.min.js"></script>
+	<script src="../js/jquery.scrollTo.js"></script>
+	<script src="../js/jquery.appear.js"></script>
+	<script src="../js/stellar.js"></script>
+	<script src="../plugins/cubeportfolio/js/jquery.cubeportfolio.js"></script>
+	<script src="../js/owl.carousel.min.js"></script>
+	<script src="../js/nivo-lightbox.min.js"></script>
+    <script src="../js/custom.js"></script>
 <!--    <script src="js/mirkoprova.js"></script>-->
     
 </body>
+
+    <script src="/assets/js/doctorsinservice.js"></script> 
+   <!-- <script src="../doctorsloader.js"></script>  -->
     
     
 </html>

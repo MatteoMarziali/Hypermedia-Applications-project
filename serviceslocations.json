@@ -1,0 +1,46 @@
+[
+    {
+        "service": "Plastic Surgery",
+        "location": "Segrate"
+    },
+    {
+        "service": "Plastic Surgery",
+        "location": "San Donato Milanese"
+    },
+    {
+        "service": "Orthodontics",
+        "location": "Rozzano"
+    },
+    {
+        "service": "Radiology Exams",
+        "location": "San Donato Milanese"
+    },
+    {
+        "service": "Radiology Exams",
+        "location": "Segrate"
+    },
+    {
+        "service": "Blood Tests",
+        "location": "Segrate"
+    },
+    {
+        "service": "Rehabilitation",
+        "location": "Segrate"
+    },
+    {
+        "service": "Orthodontics",
+        "location": "Segrate"
+    },
+    {
+        "service": "Rehabilitation",
+        "location": "Rozzano"
+    },
+    {
+        "service": "Rehabilitation",
+        "location": "San Donato Milanese"
+    },
+    {
+        "service": "Blood Tests",
+        "location": "Rozzano"
+    }
+]

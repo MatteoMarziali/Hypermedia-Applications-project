@@ -34,6 +34,7 @@
 	padding-right: 20%;
 }
 
+/*
 #responsib:hover span { display: none; }
 #responsib:hover:after {
   content: "Click to show the service this doctor is responsible for";
@@ -42,6 +43,7 @@
 #serv:hover:after {
   content: "Click to show the service this doctor works in";
 }
+*/
 
 #responsib, #serv{
      align-content: center; 

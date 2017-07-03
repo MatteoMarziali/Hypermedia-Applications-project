@@ -2,7 +2,7 @@
 
 This repository will be updated during our hands on lectures with a
 small app to manage pets. We suggest to use it as a starting point
-(fork) for your project once we finished.
+(fork) for your project once we finished. ciao
 
 ## What is this repository for?
 

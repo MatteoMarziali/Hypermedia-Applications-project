@@ -1,0 +1,16 @@
+[
+	{
+		"id": 0,
+		"name": "matteo",
+		"email": "matteo@mjm.it",
+		"phone": "334594959",
+		"notes": "I need a wheelchair",
+		"contactType": "email",
+		"monday": false,
+		"tuesday": false,
+		"wednesday": true,
+		"thursday": false,
+		"friday": false,
+		"dayportion": 2
+	}
+]
