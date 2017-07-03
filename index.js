@@ -95,7 +95,7 @@ function initDoctorsDB() {
 		if (!exists) {
 			sqlDb.schema
 				.createTable("doctors", table => {
-					table.integer("id");
+					table.integer("idd");
 					table.string("name");
 					table.integer("date").unsigned();
 					table.enum("sex", ["male", "female"]);
@@ -108,7 +108,7 @@ function initDoctorsDB() {
 				.then(() => {
 					return Promise.all(
 						_.map(doctorsList, p => {
-							
+							delete p.id;
 							return sqlDb("doctors").insert(p);
 						})
 					);
@@ -159,7 +159,7 @@ app.get("/doctors", function (req, res) {
 	}
 
 	if (id !== 0) {
-		myQuery.where("id", id).limit(1).offset(start).then(result => {
+		myQuery.where("idd", id).limit(1).offset(start).then(result => {
 			res.send(JSON.stringify(result));
 		});
 	} else if (location !== "none") {
@@ -182,7 +182,7 @@ app.get("/doctors", function (req, res) {
 
 app.post("/doctors", function (req, res) {
 	let toappend = {
-        id: req.body.id,
+        idd: req.body.idd,
 		name: req.body.name,
 		sex: req.body.sex,
 		date: req.body.date,
@@ -195,7 +195,7 @@ app.post("/doctors", function (req, res) {
 	sqlDb("doctors").insert(toappend).then(ids => {
 		let id = ids[0];
 		res.send(_.merge({
-			idq,
+			id,
 			toappend
 		}));
 	});

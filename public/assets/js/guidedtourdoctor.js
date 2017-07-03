@@ -101,9 +101,9 @@ To make an appointment with one of our doctor use the form:
     
     
     
-   doctorImage.attr("src","/assets/img/doctors/"+doctor.id+".jpg");
+   doctorImage.attr("src","/assets/img/doctors/"+doctor.idd+".jpg");
    
-    gotoProfile.attr("href","/pages/singledoctor.html"+"?id="+doctor.id);
+    gotoProfile.attr("href","/pages/singledoctor.html"+"?id="+doctor.idd);
 
    if(doctor.responsible!=="-"){
 	doctorResponsible.text(doctor.responsible);

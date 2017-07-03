@@ -18,9 +18,9 @@ function addRow(doctor) {
     `
 
                 <li class="cbp-item psychiatrist" >
-                        <a href="/pages/guidedtourdoctor.html?id=${doctor.id}" class="cbp-caption cbp-singlePage">
+                        <a href="/pages/guidedtourdoctor.html?id=${doctor.idd}" class="cbp-caption cbp-singlePage">
                             <div class="cbp-caption-defaultWrap">
-                                <img src="/assets/img/doctors/${doctor.id}.jpg" alt="" width="100%">
+                                <img src="/assets/img/doctors/${doctor.idd}.jpg" alt="" width="100%">
                             </div>
                             <div class="cbp-caption-activeWrap">
                                 <div class="cbp-l-caption-alignCenter">
@@ -30,7 +30,7 @@ function addRow(doctor) {
                                 </div>
                             </div>
                         </a>
-                        <a href="/pages/guidedtourdoctor.html?id=${doctor.id}" class="cbp-singlePage cbp-l-grid-team-name">${doctor.name}</a>
+                        <a href="/pages/guidedtourdoctor.html?id=${doctor.idd}" class="cbp-singlePage cbp-l-grid-team-name">${doctor.name}</a>
                         <div class="cbp-l-grid-team-position">${doctor.position}</div>
                     </li>
                 

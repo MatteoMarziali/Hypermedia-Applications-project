@@ -52,7 +52,7 @@ function addDoctorFields(doctor) {
 	doctorPosition.text("Position: " + doctor.position);
 
 	
-	doctorImage.attr("src", "/assets/img/doctors/" + doctor.id + ".jpg");
+	doctorImage.attr("src", "/assets/img/doctors/" + doctor.idd + ".jpg");
 	doctorLocation.text(doctor.location);
     
     doctorLocation.attr("href","/pages/SingleLocation.html?name="+doctor.location);
