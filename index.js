@@ -108,7 +108,7 @@ function initDoctorsDB() {
 				.then(() => {
 					return Promise.all(
 						_.map(doctorsList, p => {
-							delete p.id;
+							
 							return sqlDb("doctors").insert(p);
 						})
 					);
