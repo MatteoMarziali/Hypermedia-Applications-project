@@ -1,3 +1,10 @@
+/*
+*-------------------------------------------------------------------------------------------------------------------------
+*   The script to get all doctors which work in the location specified in the query string in the URL
+    and displaying them in the page
+*/
+
+
 let start = 0;
 let count = 10;
 let sortby = "none"; 
@@ -37,7 +44,8 @@ function addDoctor(doctor) {
 }
 
 
-
+//This function sets a sorting parameter and updates the page, in this webapp only sorting doctors by 
+//alphabetical order was used
 
 function setSort(x) {  
     sortby = x;

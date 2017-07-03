@@ -1,3 +1,4 @@
+//This function fills the page with the single location by adding the fields taken from answer by the query to the database
 function addLocFields(location) {
 
 	$("#loctitle").append(`${location.city}`);
@@ -45,6 +46,7 @@ function addLocFields(location) {
 	);
 }
 
+//This function leads to retrieve the name of the desired location from the url by decomposing it and by getting the right portion
 function getLoc() {
 	var query_string = {};
 	var url = window.location.href;
@@ -61,6 +63,8 @@ function getLoc() {
 
 }
 
+//This function sends a request to the get function for the locations with  a query to get a single location
+// and pass the response to the function addLocFields()
 function fetchLocation() { //sends a request, gets the rsults, and then rewrites the table row by row
 	var locc = getLoc();
 	//console.log("id del dottore da fetchare:"+docId);

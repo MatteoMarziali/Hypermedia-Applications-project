@@ -1,3 +1,4 @@
+//This function fills the page with all the locations by adding the fields taken from answer by the query to the database
 function addAllloc(location) {
 
 
@@ -23,7 +24,7 @@ function addAllloc(location) {
 }
 
 
-function updateLocationsList() { //sends a request, gets the rsults, and then rewrites the table row by row
+function updateLocationsList() { //sends a request, gets the results, and then rewrites the table row by row
 	console.log("sono nella update locations");
 	fetch(`/locations`) //we draw again every time the UI, seems inefficient but it's not
 		.then(function (response) {
@@ -34,19 +35,6 @@ function updateLocationsList() { //sends a request, gets the rsults, and then re
 		});
 }
 
-function getSingleLocation() {
-	fetch('/locations?city=${location.city}')
-		.then(function (response) {
-			return response.json();
-		})
-		.then(function (data) {
-			data.map(addloc);
-		});
-}
-
-function addloc(location) {
-	console.log("sono nella addloc");
-}
 
 function startup() {
 	updateLocationsList();

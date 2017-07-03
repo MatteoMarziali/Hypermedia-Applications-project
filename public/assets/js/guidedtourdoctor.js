@@ -1,3 +1,9 @@
+/*
+*-------------------------------------------------------------------------------------------------------------------------
+*   The script used to load the page of a single doctor in the guided tour of the doctors contained in the page
+    we're looking at.
+*/
+
 var doctorName;
 var doctorDescription;
 var doctorPosition;

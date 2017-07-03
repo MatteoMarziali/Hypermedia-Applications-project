@@ -1,3 +1,11 @@
+/*
+*-------------------------------------------------------------------------------------------------------------------------
+*   The script to get all Locations and with a link on the image, when a location is clicked, 
+    the link with the query string containing information about which location we chose is opened
+    displaying all doctors working in that location
+   
+*/
+
 function addLocation(location) {
 
 

@@ -1,3 +1,8 @@
+/*
+*-------------------------------------------------------------------------------------------------------------------------
+*   The script to get all doctors working in the clinic and displaying them in the page
+*/
+
 let start = 0;
 let count = 10;
 let sortby = "none"; 
@@ -42,14 +47,9 @@ function addRow(doctor) {
 
 
 
-function formDataAsJSON(formData) {
-  let x = {};
-  for (var pair of formData.entries()) {
-    x[pair[0]] = pair[1];
-  }
-  return JSON.stringify(x);
-}
 
+//This function sets a sorting parameter and updates the page, in this webapp only sorting doctors by 
+//alphabetical order was used
 
 function setSort(x) {  
 
@@ -62,11 +62,10 @@ function setSort(x) {
 
 
 
-function updateDoctorsList() {  //sends a request, gets the rsults, and then rewrites the table row by row
+function updateDoctorsList() {  
     
     
-    fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}`)   //we draw again every time the UI, seems inefficient but it's not
-    
+    fetch(`/doctors?start=${start}&limit=${count}&sort=${sortby}`)  
     .then(function(response) {
       return response.json();
     })
