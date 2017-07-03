@@ -95,7 +95,7 @@ function initDoctorsDB() {
 		if (!exists) {
 			sqlDb.schema
 				.createTable("doctors", table => {
-					table.increments();
+					table.integer("id");
 					table.string("name");
 					table.integer("date").unsigned();
 					table.enum("sex", ["male", "female"]);
@@ -141,7 +141,6 @@ app.use(bodyParser.urlencoded({
 
 app.get("/doctors", function (req, res) {
 
-	console.log("sono nella get con start");
 	let start = parseInt(_.get(req, "query.start", 0));
 	let limit = parseInt(_.get(req, "query.limit", 10));
 	let sortby = _.get(req, "query.sort", "none");
@@ -182,6 +181,7 @@ app.get("/doctors", function (req, res) {
 
 app.post("/doctors", function (req, res) {
 	let toappend = {
+        id: req.body.id,
 		name: req.body.name,
 		sex: req.body.sex,
 		date: req.body.date,
@@ -191,13 +191,7 @@ app.post("/doctors", function (req, res) {
 		area: req.body.area,
 		service: req.body.service
 	};
-	sqlDb("doctors").insert(toappend).then(ids => {
-		let id = ids[0];
-		res.send(_.merge({
-			id,
-			toappend
-		}));
-	});
+	sqlDb("doctors").insert(toappend);
 });
 
 // app.use(function(req, res) {
