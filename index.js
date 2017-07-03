@@ -141,6 +141,7 @@ app.use(bodyParser.urlencoded({
 
 app.get("/doctors", function (req, res) {
 
+	console.log("sono nella get con start");
 	let start = parseInt(_.get(req, "query.start", 0));
 	let limit = parseInt(_.get(req, "query.limit", 10));
 	let sortby = _.get(req, "query.sort", "none");
@@ -191,7 +192,13 @@ app.post("/doctors", function (req, res) {
 		area: req.body.area,
 		service: req.body.service
 	};
-	sqlDb("doctors").insert(toappend);
+	sqlDb("doctors").insert(toappend).then(ids => {
+		let id = ids[0];
+		res.send(_.merge({
+			idq,
+			toappend
+		}));
+	});
 });
 
 // app.use(function(req, res) {
