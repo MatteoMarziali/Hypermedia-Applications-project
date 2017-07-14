@@ -1,60 +1,20 @@
-/*
- *-----------------------------------------------------------------------------------------------------------------------
- *   Initializing variables and base setup
- */
-
-
-//Requiring all the needed libraries
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const sqlDbFactory = require("knex"); //it's like a factory function, it creates the connection
 const process = require("process");
-const _ = require("lodash");
-const array = require("lodash/array");
-
-//Setting the port used to communicate
-let serverPort = process.env.PORT || 5000
-
-//Here we require all the json files that store
-//the data we are importing in the database
-let doctorsList = require("./doctorstoredata.json");
-let locationsList = require("./locationsdata.json");
-let servicesList = require("./servicesdata.json");
-let serviceslocationsList = require("./serviceslocations.json");
-
-//The following is used to serve static files and our starting point is
-//"__dirname + "/public" where __dirname defines the directory name of the current module
-app.use(express.static(__dirname + "/public"));
-
-//Using the body parser to extract the body portion of the request and to expose
-//it req body as something easier to interface with
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
-	extended: true
-}));
 
 
-//This variable will store the initialized DB client
 let sqlDb;
 
-
-/*
- *-------------------------------------------------------------------------------------------------------------------------
- *   Defining functions
- */
-
-
-/*
- * The following function initializes the database client
- * based on an environment variable "TEST" that will
- * define whether to use sqlite3 or postgres as the
- * db client (this is required for heroku deployment)
- */
 function initSqlDB() {
+	/* Locally we should launch the app with TEST=true to use SQLlite:
 
-	if (process.env.TEST) { //Locally we are using sqlite3, so we need to type "set test=TRUE" in the
-		sqlDb = sqlDbFactory({ //command prompt to make the server work with sqlite3
+	     > TEST = true node ./index.js
+
+	  */
+	if (process.env.TEST) {
+		sqlDb = sqlDbFactory({
 			client: "sqlite3",
 			debug: true,
 			connection: {
@@ -62,7 +22,7 @@ function initSqlDB() {
 			}
 		});
 	} else {
-		sqlDb = sqlDbFactory({ //Heroku will use postgres as its database client
+		sqlDb = sqlDbFactory({
 			debug: true,
 			client: "pg",
 			connection: process.env.DATABASE_URL,
@@ -71,19 +31,70 @@ function initSqlDB() {
 	}
 }
 
-/*
- * This function initializes the docotrs table. 
- * At first it checks if the Database of the webapp already has a table called "doctors", if it doesn't
- * it's going to be created with the specified fields and populated with data obtained by its relative JSON file.
- * 
- */
+
+function initServicesLocationDB() {
+	return sqlDb.schema.hasTable("serviceslocations").then(exists => {
+		if (!exists) {
+			sqlDb.schema
+				.createTable("serviceslocations", table => {
+					table.string("service");
+					table.string("location");
+				})
+				.then(() => {
+					return Promise.all(
+						_.map(serviceslocationsList, p => {
+							return sqlDb("serviceslocations").insert(p);
+						})
+					);
+				});
+		} else {
+			return true;
+		}
+	});
+
+}
+
+app.get("/serviceslocations", function (req, res) {
+
+	console.log("Sono nella get di serviceslocations");
+	let service = _.get(req, "query.service", "none");
+	console.log("service: " + service)
+	let location = _.get(req, "query.location", "none");
+	console.log("location: " + location);
+	let myQuery = sqlDb("serviceslocations");
+	let myQuery1 = sqlDb("services");
+
+
+	if (service != "none") {
+		if (location != "none") {
+			console.log("Error, I won't send anything");
+		} else {
+			console.log("Qui ci sono tutte le location")
+			//prendo tutte le location relativo a quella service
+			myQuery.where("service", service).join('services', 'services.name', '=', "serviceslocations.service").then(result => {
+				res.send(JSON.stringify(result));
+			});
+		}
+	} else {
+		if (location != "none") {
+			console.log("tutti i servizi");
+			myQuery.where("location", location).join('services', 'services.name', '=', 'serviceslocations.service').then(result => {
+				res.send(JSON.stringify(result));
+			});
+		} else {
+			console.log("Sono nell'ultimo else");
+			let empty = [];
+			res.send(JSON.stringify(empty));
+		}
+	}
+});
 
 function initDoctorsDB() {
 	return sqlDb.schema.hasTable("doctors").then(exists => {
 		if (!exists) {
 			sqlDb.schema
 				.createTable("doctors", table => {
-					table.integer("idd");
+					table.increments();
 					table.string("name");
 					table.integer("date").unsigned();
 					table.enum("sex", ["male", "female"]);
@@ -107,16 +118,25 @@ function initDoctorsDB() {
 	});
 }
 
+const _ = require("lodash");
+const array = require("lodash/array");
 
+let serverPort = process.env.PORT || 5000;
 
-// /* Register REST entry point for Doctors */
-/*
- * We use the following function to get the doctors requested by the query.
- * Only the needed queries were implemented: the query to get a single doctor by its id,
- * the one which returns the JSON list of all doctors working in a specific location or 
- * in a specific service. If none of this fields are specified in the query, a JSON
- * containing all doctors is returned.
- */
+let doctorsList = require("./doctorstoredata.json");
+let locationsList = require("./locationsdata.json");
+let reservationsList = require("./reservations.json");
+let servicesList = require("./servicesdata.json");
+let serviceslocationsList = require("./serviceslocations.json");
+
+app.use(express.static(__dirname + "/public"));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
+
+// /* Register REST entry point */
 
 app.get("/doctors", function (req, res) {
 
@@ -138,7 +158,7 @@ app.get("/doctors", function (req, res) {
 	}
 
 	if (id !== 0) {
-		myQuery.where("idd", id).limit(1).offset(start).then(result => {
+		myQuery.where("id", id).limit(1).offset(start).then(result => {
 			res.send(JSON.stringify(result));
 		});
 	} else if (location !== "none") {
@@ -159,27 +179,47 @@ app.get("/doctors", function (req, res) {
 
 
 
+app.post("/doctors", function (req, res) {
+	let toappend = {
+		name: req.body.name,
+		sex: req.body.sex,
+		date: req.body.date,
+		phone: req.body.phone,
+		email: req.body.email,
+		location: req.body.location,
+		area: req.body.area,
+		service: req.body.service
+	};
+	sqlDb("doctors").insert(toappend).then(ids => {
+		let id = ids[0];
+		res.send(_.merge({
+			id,
+			toappend
+		}));
+	});
+});
 
-/*
- * This function initializes the services table. First of all I inserted 
- * in a json format file all the data related to services and required it.
- * Then the function checks if the services table already exists, creating
- * it if it doesn't and adds all the data located in the json file in the database.
- */
+// app.use(function(req, res) {
+//   res.status(400);
+//   res.send({ error: "400", title: "404: File Not Found" });
+// });
+
+app.set("port", serverPort);
+
 function initServicesDb() {
-
-	//We use here the code the professor suggested us during the lessons
 	return sqlDb.schema.hasTable("services").then(exists => {
 		if (!exists) {
 			sqlDb.schema.createTable("services", table => {
+				table.increments();
 				table.string("name");
 				table.integer("referring_doctor_id");
 				table.json("locations");
-				table.string("description");
-				table.string("img");
+				table.text("description");
+				table.text("img");
 			}).then(() => {
 				return Promise.all(
 					_.map(servicesList, p => {
+						delete p.id;
 						p.locations = JSON.stringify(p.locations);
 						return sqlDb("services").insert(p);
 					})
@@ -192,34 +232,23 @@ function initServicesDb() {
 	});
 }
 
-/*
- * We use the following function to get the services requested.
- * if the query specifies a service name, the function returns
- * that specific service otherwise it returns all the elements 
- * in the table.
- */
 app.get("/services", function (req, res) {
-
-	let name = _.get(req, "query.name", "none"); //This function gets the value of the name attribute of the query
-	let myQuery = sqlDb("services"); //using "none" as default
+	console.log("Nella get");
+	let name = _.get(req, "query.name", "none");
+	let myQuery = sqlDb("services");
 
 	if (name != "none") {
-		myQuery.where("name", name).then((result) => { //This extracts all the elements that have the same name as the
-			res.send(JSON.stringify(result)); //one passed to the query, and sends the data in response
+		myQuery.where("name", name).then((result) => {
+			res.send(JSON.stringify(result));
 		});
 	} else {
-		myQuery.then((result) => { //this section returns all the elements of the "services" table
+		myQuery.then((result) => {
 			res.send(JSON.stringify(result));
 		});
 	}
+	console.log("fine get");
 });
 
-/*
- * This function initializes the locations table. First of all I inserted 
- * in a json format file all the data related to services and required it.
- * Then the function checks if the locations table already exists, creating
- * it if it doesn't and adds all the data located in the json file in the database.
- */
 function initLocationDb() {
 	return sqlDb.schema.hasTable("locations").then(exists => {
 		if (!exists) {
@@ -250,12 +279,7 @@ function initLocationDb() {
 	});
 }
 
-/*
- * We use the following function to get the locations requested.
- * if the query specifies a location city, the function returns
- * that specific location otherwise it returns all the elements 
- * in the table.
- */
+
 app.get("/locations", function (req, res) {
 
 	console.log("sono nella get con start");
@@ -276,81 +300,8 @@ app.get("/locations", function (req, res) {
 	}
 });
 
-/*
- * The following function initializes the services-locations table that
- * contains couples "service, location" representing the relation between
- * them. We thougt this was necessary because one service can be delivered
- * in more than one location and one location can deliver more than one 
- * service and in order to maintain the schemas relational we adopted
- * this strategy. This table will be needed for example to show al the locations
- * related to a service and vice versa and it will be joined (with k'nex join function)
- * with services table in order to get any service information given the location and vice versa.
- */
-function initServicesLocationDB() {
-
-	//We use here the code suggested by the professor during the lessons
-	return sqlDb.schema.hasTable("serviceslocations").then(exists => {
-		if (!exists) {
-			sqlDb.schema
-				.createTable("serviceslocations", table => {
-					table.string("service");
-					table.string("location");
-				})
-				.then(() => {
-					return Promise.all(
-						_.map(serviceslocationsList, p => {
-							return sqlDb("serviceslocations").insert(p);
-						})
-					);
-				});
-		} else {
-			return true;
-		}
-	});
-
-}
 
 
-/*
- * Function that gets all the services given a specific location and vice versa.
- * if the query specifies both the service and the location we decided to return 
- * an empty json, and the same happens if the query doesn't specify any of them
- * because we wanted to keep the purpose of this get in getting all the services
- * given a location and the way back and this happens if the query specifies only
- * the location or the service.
- */
-app.get("/serviceslocations", function (req, res) {
-
-	let service = _.get(req, "query.service", "none"); //This variable stores the value of the service passed to the query
-	let location = _.get(req, "query.location", "none"); //This one the location
-	let myQuery = sqlDb("serviceslocations");
-	let empty = [];
-
-	if (service != "none") { //if both the variables are different from 'none' then we return anything
-		if (location != "none") {
-			res.send(JSON.stringify(empty));
-		} else {
-			//This query gets all the services with the service value specified by the query and joins it with the service 
-			//table to get all the service information that we required in our pages
-			myQuery.where("service", service).join('services', 'services.name', '=', "serviceslocations.service").then(result => {
-				res.send(JSON.stringify(result));
-			});
-		}
-	} else {
-		if (location != "none") {
-			//The same happens here, the only difference is that we select here the tuples that have the same location as the
-			//one passed to the query
-			myQuery.where("location", location).join('services', 'services.name', '=', 'serviceslocations.service').then(result => {
-				res.send(JSON.stringify(result));
-			});
-		} else {
-			res.send(JSON.stringify(empty));
-		}
-	}
-});
-
-
-//The following function creates a reservations table in the database, to save the booking requests.
 function initReservationsDb() { //we first have to specify the schema of the database
 	return sqlDb.schema.hasTable("reservations").then(exists => {
 		if (!exists) { //if it does not exist we're gonna populate it
@@ -365,7 +316,7 @@ function initReservationsDb() { //we first have to specify the schema of the dat
 				})
 				.then(() => { //we populate with the data we had last time
 					return Promise.all(
-						//returns the promises list
+						//ritorna la lista di promises
 						_.map(reservationsList, loc => {
 
 							delete loc.reservations;
@@ -379,13 +330,12 @@ function initReservationsDb() { //we first have to specify the schema of the dat
 	});
 }
 
-//this function inserts in the reservations table the data filled in the reservation form to keep the bookings history. 
 app.post("/reservations", function (req, res) {
 	let toappend = {
 		name: req.body.name,
 		email: req.body.email,
 		phone: req.body.phone,
-		notes: req.body.notes
+		notes: req.body.notes,
 
 	};
 	sqlDb("reservations").insert(toappend).then(ids => {
@@ -397,32 +347,27 @@ app.post("/reservations", function (req, res) {
 	});
 });
 
-//This function manages the request to see the bookings history and sends the reponse in JSON format.
 app.get("/reservations", function (req, res) {
-
 
 	console.log("sono nella get con start");
 	let myQuery = sqlDb("reservations");
 
+
+
 	myQuery.then(result => {
 		res.send(JSON.stringify(result));
+
 
 	});
 });
 
 
-/*
- *---------------------------------------------------------------------------------------------------------------------------------
- *   Calling functions
- */
 
-app.set("port", serverPort);
 
 /* Start the server on port 5000 */
 app.listen(serverPort, function () {
 	console.log(`Your app is ready at port ${serverPort}`);
 });
-
 
 initSqlDB();
 initDoctorsDB();
