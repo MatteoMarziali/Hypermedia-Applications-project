@@ -4,7 +4,6 @@ $(document).ready(function () {
 	});
 });
 
-//this method returns the fields insert for each person (x) that has filled the form 
 function formDataAsJSON(formData) {
 	let x = {};
 	for (var pair of formData.entries()) {
@@ -16,8 +15,6 @@ function formDataAsJSON(formData) {
 	return JSON.stringify(x);
 }
 
-//This is the method to make the post of the data filled in the form and show them on screen by calling 
-//UpdateBookingsList()
 function clickSubmitData() {
 	let headers = new Headers();
 	headers.set("Content-Type", "application/json");
@@ -39,8 +36,6 @@ function clickSubmitData() {
 	alert("Request sent successfully!");
 }
 
-//This function fills the table of bookings taking updated info from the database through the function 
-// updateBookingsList() which is the caller
 function addRow(booking) {
 	console.log("Adding row");
 	$("#myrows").append(
@@ -53,7 +48,6 @@ function addRow(booking) {
 	);
 }
 
-//
 function updateBookingsList() {
 	fetch(`/reservations`)
 		.then(function (response) {
@@ -63,3 +57,5 @@ function updateBookingsList() {
 			data.map(addRow);
 		});
 }
+
+updateBookingsList();
