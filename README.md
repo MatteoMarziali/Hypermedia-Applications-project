@@ -1,34 +1,5 @@
-# README
+# MJM Clinic webapp
 
-This repository will be updated during our hands on lectures with a
-small app to manage pets. We suggest to use it as a starting point
-(fork) for your project once we finished.
+Development of a Health Clinic web application demo running on a Node.js based server which accesses and queries a Database to get the dynamic content to display. The front-end of the application was developed using HTML, CSS, JavaScript (and jQuery) and was previously designed and modeled with IDM notation, lowfidelity wireframes and an interactive Mockup. The application was deployed in Cloud on Heroku (PaaS). 
 
-## What is this repository for?
-
-Once you fork this repo, you can completely modify it at your own will
-to write your project. You will find the instructions to deploy this
-repo directly to your heroku account below.
-
-## How do I get set up to test this locally?
-
--   To run this server locally you should have Nodejs
-    (v7.5.0) installed.
-
--   To install the dependencies:
-
-        npm install .
-
--   To start the server (see property `scripts` in package.json)
-
-        npm start
-
-## How do I deploy this to Heroku
-
-*Do this only if you are the team administrator*.
-
-1.  Setup heroku and/or login according to the manual
-
-2.  just type:
-
-        git push heroku master
+[MJM Clinic on Heroku](https://mirkomantovani.herokuapp.com/index.html)
